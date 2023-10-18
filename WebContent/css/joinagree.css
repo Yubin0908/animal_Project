@@ -1,0 +1,155 @@
+/* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* box 모델 사용 */
+}
+body {
+  background-color: #f5f5f5;
+}
+
+/* Overall container */
+#join_agree_wrap {
+  width: 1400px;
+  margin: 0 auto;
+  display: block;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  overflow: hidden;
+}
+
+/* .join_sub_title styles */
+.join_sub_title {
+  color: #202020;
+  letter-spacing: 2px; /* 더 작은 letter-spacing */
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1.5em; /* 크게 수정 */
+  margin-top: 20px;
+  margin-bottom: 30px; /* 조금 줄임 */
+  margin-right: auto;
+  margin-left: auto;
+  width: 1000px;
+  text-align: center;
+}
+
+/* .join_step styles */
+.join_step {
+  display: flex; /* flex 사용 */
+  max-width: 600px; /* 최대 너비 설정 */
+  border: 1px solid #ccc; /* 테두리 추가 */
+  border-radius: 5px; /* 둥근 모서리 */
+  padding: 10px;
+  width: 200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.join_step p {
+  font-size: 1.2em; /* 크게 수정 */
+  text-align: center;
+  margin-left: 30px;
+}
+/* area- title styles */
+.col-area-title {
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: 500;
+}
+/* .col-area styles */
+.col-area {
+  margin: 20px;
+  width: 100%;
+  max-width: 600px; /* 최대 너비 설정 */
+  text-align: left;
+  float: left;
+
+}
+.col-area textarea {
+  padding: 10px; /* 조금 더 패딩 추가 */
+  width: 100%;
+  display: block;
+  border: 1px solid #ccc; /* 테두리 추가 */
+  border-radius: 5px; /* 둥근 모서리 */
+
+}
+.joinagree_radio {
+  text-align: center;
+  margin-top: 5px;
+}
+/* Textarea styles */
+.nosize {
+  resize: none !important;
+  outline: none;
+}
+
+/* button and Submit */
+.joinagree_submit > input, .joinagree_submit > input {
+
+  border: none;
+  outline: none;
+  width: 300px;
+  padding: 15px;
+  font-size: 1.2em; /* 폰트 크기 수정 */
+  font-weight: bold;
+  margin: 20px auto 0 auto; /* 위아래 여백 추가 */
+  background-color: #ffe6e6; /* 배경색 추가 */
+  color: #ff3399; /* 텍스트 색상 변경 */
+  cursor: pointer;
+  border-radius: 5px; /* 둥근 모서리 */
+  text-align: center;
+}
+
+/* Hover 효과 */
+.joinagree_submit > input:hover, .joinagree_submit > input:hover {
+  background-color: #ff3399; /* Hover 시 배경색 변경 */
+  color: #f9f9f9;
+}
+
+/* scrollbar styles */
+textarea::-webkit-scrollbar {
+  width: 4px; // 스크롤바 두께
+}
+textarea::-webkit-scrollbar-thumb { // 스크롤바 innerbar
+  background-color: #8d8d8d;
+  border-radius: 2px;
+}
+textarea::-webkit-scrollbar-track { // 스크롤바 back
+  background-color: #ebe9e9;
+  border-radius: 5px;
+}
+/* 라디오 버튼 스타일 (기본 라디오 버튼 숨김) */
+input[type="radio"] {
+  display: none;
+}
+
+/* 귀여운 라디오 버튼 컨테이너 스타일 */
+.custom-radio-container {
+  display: inline-block;
+  position: relative;
+  padding-left: 25px; /* 라디오 버튼과 라벨 사이 간격 조정 */
+  cursor: pointer;
+  font-size: 16px;
+  color: #333; /* 일반 텍스트 색상 설정 */
+}
+
+/* 라디오 버튼 앞에 귀여운 동그라미 스타일 */
+.custom-radio-container::before {
+  content: "";
+  display: inline-block;
+  width: 15px; /* 동그라미의 너비 */
+  height: 15px; /* 동그라미의 높이 */
+  border: 2px solid #ccc;
+  border-radius: 50%; /* 동그라미 모양 */
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* 라디오 버튼 체크 스타일 */
+input[type="radio"]:checked + .custom-radio-container::before {
+  background-color: sandybrown; /* 체크된 상태의 배경색 설정 */
+  border-color: sandybrown; /* 체크된 상태의 테두리 색상 설정 */
+}

@@ -1,0 +1,150 @@
+/* 전체 스타일 초기화 및 공통 스타일 */
+@font-face {
+	font-family: 'Nanum_main', sans-serif;
+	src: url(../font/Nanum_main.ttf);
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Nanum_main', sans-serif;
+	background-color: #f8f8f8; /* 페이지 전체 배경색 변경 */
+}
+
+/* Logo 스타일 */
+.logo a img {
+	width: 150px;
+	height: auto;
+}
+
+/* Navigation 스타일 */
+#gnb {
+	background-color: #fff;
+	border-bottom: 1px solid #ddd;
+	border-top: 1px solid #ddd;
+}
+
+#gnb .gnb_menu > ul li a {
+	color: #333;
+	font-weight: 500;
+	transition: color 0.3s ease-in-out;
+}
+
+#gnb .gnb_menu > ul li a:hover,
+#gnb .gnb_menu > ul li a.on {
+	color: #ff66b2; /* Navigation 항목에 호버 시 색상 변경 */
+}
+
+/* Wrap 스타일 */
+#wrap {
+	width: 1300px;
+	margin: 0 auto;
+	background-color: #fff; /* Wrap 배경색 변경 */
+	border-radius: 10px;
+	padding: 20px; /* Wrap 내용과 외부 사이 여백 추가 */
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 슬라이드 배너 스타일 */
+#container {
+	width: 100%;
+	display: flex;
+	overflow: hidden;
+	text-align: center;
+	margin-bottom: 20px;
+	position: relative;
+}
+
+.slide {
+	float: left;
+	width: 100%;
+	position: relative;
+	transition: transform 5s;
+	overflow: hidden;
+}
+
+.slide img {
+	width: 100%;
+	height: 500px; /* 슬라이드 배너 높이 조정 */
+	object-fit: cover; /* 이미지가 잘릴 수 있도록 설정 */
+}
+
+/* Content 스타일 */
+#content {
+	width: 100%;
+	overflow: hidden;
+}
+
+/* Widget 스타일 */
+
+/* Ext List 스타일 */
+.ext_list {
+	width: 100%;
+	text-align: center;
+	margin-bottom: 30px; /* Ext List와 다음 내용 사이 여백 추가 */
+}
+
+.ext_list_title {
+	font-size: 2.5em; /* Ext List 제목 크기 조정 */
+	margin-bottom: 10px;
+	color: #ff66b2; /* Ext List 제목 색상 변경 */
+}
+
+.ext_list_title img {
+	width: 40px;
+	height: auto;
+	margin-left: 10px; /* Ext List 아이콘과 제목 사이 여백 추가 */
+}
+
+.ext_list_cat {
+	border: 2px solid #ff66b2; /* Ext List 아이템 테두리 스타일 변경 */
+	border-radius: 10px;
+	float: left;
+	width: calc(25% - 20px); /* Ext List 아이템 너비 및 간격 조정 */
+	margin: 10px;
+	transition: transform 0.3s ease-in-out;
+}
+
+.ext_list_cat:hover {
+	transform: scale(1.05); /* 아이템 호버 시 확대 효과 추가 */
+}
+
+.info_img a img {
+	width: 100%;
+	height: auto;
+	display: block; /* 이미지를 블록 요소로 변경하여 간격 제어 */
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.info_text {
+	padding: 10px;
+	background-color: #f8f8f8; /* 아이템 배경색 변경 */
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	text-align: center;
+}
+
+.info_text span {
+	background-color: #ff66b2; /* 아이템 분류 배경색 변경 */
+	color: #fff; /* 아이템 분류 텍스트 색상 변경 */
+	font-weight: bold;
+	padding: 5px;
+	display: inline-block;
+	margin-bottom: 5px;
+}
+
+.info_text h4 > p {
+	font-size: 1.2em; /* 이름 및 별명 텍스트 크기 조정 */
+	font-weight: bold;
+	margin: 5px 0;
+}
+
+.info_text > p {
+	font-size: 1.1em; /* 날짜 텍스트 크기 조정 */
+	font-weight: bold;
+	color: #999; /* 날짜 텍스트 색상 변경 */
+}

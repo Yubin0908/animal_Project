@@ -1,0 +1,10 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#about_wrap {
+  width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}

@@ -1,0 +1,53 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #fff3e6;
+  margin: 0;
+  padding: 0;
+}
+
+#contact {
+  width: 80%;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  text-align: center;
+  color: #ff3399; /* 핑크색으로 변경 */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #fff; /* 테이블 배경색 추가 */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #ff3399; /* 핑크색으로 변경 */
+  color: #fff; /* 흰색으로 변경 */
+}
+
+tr:nth-child(even) {
+  background-color: #ffe6e6; /* 연한 핑크색으로 변경 */
+}
+
+tr:hover {
+  background-color: #ffe6e6;
+  color: #ff3399;
+  transition: background-color 0.3s ease-in-out;
+}
