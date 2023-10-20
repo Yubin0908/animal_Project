@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -41,7 +40,7 @@ public class MemberDao {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = "SELECT COUNT(*) CNT FROM MEMBER WHERE ID = ?";
+		String sql = "SELECT ID FROM MEMBER WHERE ID = ?";
 		try {
 			conn = ds.getConnection();
 			ps = conn.prepareStatement(sql);
@@ -86,12 +85,18 @@ public class MemberDao {
 	        psA.setString(7, member.getEmail());
 	        psA.setString(8, member.getAddress());
 	        psA.setString(9, member.getNickname());
+	        int resultA = psA.executeUpdate();
 			// B sql문 처리
-			psB = conn.prepareStatement(sqlB);
-			psB.setString(1, member.getId());
-			psB.setString(2, member.getAname());
-			psB.setDate(3, member.getAdate());
-			result = psB.executeUpdate();
+	        if(resultA == PASS) {
+	        	psB = conn.prepareStatement(sqlB);
+				psB.setString(1, member.getId());
+				psB.setString(2, member.getAname());
+				psB.setDate(3, member.getAdate());
+				result = psB.executeUpdate();
+	        } else {
+	        	System.out.println("A쿼리 수행중 에러가 발생함");
+	        }
+			
 		} catch (Exception e) {
 			System.out.println(e.getMessage() + "회원가입 에러");
 		} finally {
@@ -149,16 +154,17 @@ public class MemberDao {
 		return member;
 	}
 //	-- (4) 회원정보 수정 전 비밀번호 체크
-	public int pwcheck(String id) {
+	public int pwcheck(String id, String pw) {
 		int result = FAIL;
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = "SELECT PW FROM MEMBER WHERE ID = ?";
+		String sql = " SELECT * FROM MEMBER WHERE ID = ? AND PW = ?";
 		try {
 			conn = ds.getConnection();
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, id);
+			ps.setString(2, pw);
 			rs = ps.executeQuery();
 			if(rs.next()) {
 				result = PASS;

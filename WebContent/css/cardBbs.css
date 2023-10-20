@@ -5,16 +5,41 @@ body {
   font-family: Arial, sans-serif; 
 }
 
+#pet_filter {
+	width: 1000px;
+	height: 150px;
+	margin-left: 25%;
+}
+.filter_menu {
+	background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  padding: 100px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+.filter_menu a {
+	width: 50px;
+  background-color: #ff66b2;
+  color: #fff; 
+  padding: 10px;
+  border-radius: 12px; 
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
 #card_wrap {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; /* 가로 여백을 균등하게 배치 */
-  gap: 20px; /* 카드 사이의 간격 설정 */
-  padding: 20px; /* 페이지 내용과의 간격 설정 */
+  /* justify-content: space-between; */
+  gap: 25px;
+  padding: 100px 70px 200px 70px;
 }
 
 .card {
-  width: calc(25% - 20px); /* 한 줄에 4개의 카드가 들어가도록 너비 설정 */
+  width: calc(25% - 20px); 
   background-color: #fff;
   border-radius: 15px;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
@@ -24,20 +49,20 @@ body {
 }
 
 .card:hover {
-  transform: translateY(-5px); /* 호버 시 약간 떠오르는 효과 */
+  transform: translateY(-5px); 
 }
 
 .card img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 15px; /* 이미지에도 더 둥근 모서리 적용 */
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2); /* 이미지에 그림자 효과 추가 */
+	width: 330px;
+	height: auto;
+  border-radius: 15px; 
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 .card > h2 {
   font-size: 1.5rem;
   margin-top: 10px;
-  color: #ff3399; /* 제목 글자색을 핑크로 설정 */
+  color: #ff3399; 
 }
 
 .card > p {
@@ -46,14 +71,36 @@ body {
 
 .card > a {
   display: block;
-  background-color: #ff3399; /* 링크 배경색을 핑크로 설정 */
-  color: #fff; /* 링크 글자색을 흰색으로 설정 */
+  background-color: #ff3399;
+  color: #fff; 
   padding: 10px;
-  border-radius: 12px; /* 더 둥근 버튼 스타일 적용 */
+  border-radius: 12px; 
   text-decoration: none;
   transition: background-color 0.3s ease-in-out;
 }
 
 .catd > a:hover {
-  background-color: #ff66b2; /* 호버 시 배경색 변경 */
+  background-color: #ff66b2; 
+}
+
+.paging {
+	text-align: center;
+	margin-bottom: 20px;
+	height: 30px;
+	line-height: 30px;
+}
+.paging img {
+	width: 25px;
+	line-height: 30px;
+}
+
+.admin_menu {
+	width: 300px;
+	margin-top: 30px;
+	margin-left: 50px;
+	text-align: center;
+}
+.admin_menu fieldset {
+	padding: 15px;
+	border-radius: 20px;
 }

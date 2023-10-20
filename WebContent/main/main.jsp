@@ -17,6 +17,12 @@
   		history.back();
   	</script>
   </c:if>
+  <!-- join Msg -->
+  <c:if test="${not empty joinResult }">
+  	<script>
+  		alert('${joinResult}');
+  	</script>
+  </c:if>
   <br><br>
 	<div id="wrap">
 		<div id="container">
@@ -43,137 +49,27 @@
         </h2>
       </div>
         <ul>
-          <li>
-            <div class="ext_list_cat">
-              <div class="info_img">
-                <a href="${conPath}/photoBbs/catinfo.jsp?catname=겨울">
-                  <img src="${conPath}/img/cat/겨울_노르웨이숲_01.jpg" alt="1">
-                </a>
-              </div>
-              <div class="info_text">
-                <h4>
-                  <span>노르웨이숲</span>
-                  <p>겨울</p>
-                </h4>
-                <p>2023.06월생</p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="ext_list_cat">
-              <div class="info_img">
-                <a href="${conPath}/photoBbs/catinfo.jsp?catname=라브">
-                  <img src="${conPath}/img/cat/라브_랙돌_01.jpg" alt="1">
-                </a>
-              </div>
-              <div class="info_text">
-                <h4>
-                  <span>랙돌</span>
-                  <p>라브</p>
-                </h4>
-                <p>2023.06월생</p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="ext_list_cat">
-              <div class="info_img">
-                <a href="${conPath}/photoBbs/catinfo.jsp?catname=미니">
-                  <img src="${conPath}/img/cat/미니_먼치킨_01.jpg" alt="1">
-                </a>
-              </div>
-              <div class="info_text">
-                <h4>
-                  <span>먼치킨</span>
-                  <p>미니</p>
-                </h4>
-                <p>2023.06월생</p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="ext_list_cat">
-              <div class="info_img">
-                <a href="${conPath}/photoBbs/catinfo.jsp?catname=호잇">
-                  <img src="${conPath}/img/cat/호잇_브리티쉬_02.jpg" alt="1">
-                </a>
-              </div>
-              <div class="info_text">
-                <h4>
-                  <span>브리티쉬</span>
-                  <p>호잇</p>
-                </h4>
-                <p>2023.06월생</p>
-              </div>
-            </div>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <div class="ext_list_cat">
-              <div class="info_img">
-                <a href="${conPath}/photoBbs/catinfo.jsp?catname">
-                  <img src="${conPath}/img/cat/준비중.png" alt="1">
-                </a>
-              </div>
-              <div class="info_text">
-                <h4>
-                  <span>-</span>
-                  <p>준비중</p>
-                </h4>
-                <p>2023.10 예정</p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="ext_list_cat">
-              <div class="info_img">
-                <a href="${conPath}/photoBbs/catinfo.jsp?catname">
-                  <img src="${conPath}/img/cat/준비중.png" alt="1">
-                </a>
-              </div>
-              <div class="info_text">
-                <h4>
-                  <span>-</span>
-                  <p>준비중</p>
-                </h4>
-                <p>2023.10 예정</p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="ext_list_cat">
-              <div class="info_img">
-                <a href="${conPath}/photoBbs/catinfo.jsp?catname">
-                  <img src="${conPath}/img/cat/준비중.png" alt="1">
-                </a>
-              </div>
-              <div class="info_text">
-                <h4>
-                  <span>-</span>
-                  <p>준비중</p>
-                </h4>
-                <p>2023.10 예정</p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="ext_list_cat">
-              <div class="info_img">
-                <a href="${conPath}/photoBbs/catinfo.jsp?catname">
-                  <img src="${conPath}/img/cat/준비중.png" alt="1">
-                </a>
-              </div>
-              <div class="info_text">
-                <h4>
-                  <span>-</span>
-                  <p>준비중</p>
-                </h4>
-                <p>2023.10 예정</p>
-              </div>
-            </div>
-          </li>
-        </ul>
+          <c:if test="${not empty catListMain }">
+          	<c:forEach items="${catListMain }" var="cat">
+          	<li>
+          		<div class="ext_list_cat">
+          			<div class="info_img">
+          				<a href="${conPath }/contactWriteView.do?petname=${cat.petname}&petbrads=${cat.petbrads}">
+          					<img src="${conPath }/serverUploader/${cat.petimg}" alt="${cat.petname }이미지" />
+          				</a>
+          			</div>
+          				<div class="info_text">
+          				<h4>
+          					<span>${cat.petbrads }</span>
+          					<p>${cat.petname }</p>
+          				</h4>
+          					<p>등록일 : ${cat.petupdate }</p>
+          				</div>
+          			</div>
+          		</li>
+          	</c:forEach>
+          	</c:if>
+     			</ul>
         <div class="ext_list">
           <h2 class="ext_list_title">
             LOVE DOG
@@ -182,148 +78,40 @@
             </span>
           </h2>
         </div>
+          
           <ul>
-            <li>
-              <div class="ext_list_cat">
-                <div class="info_img">
-                  <a href="${conPath}/photoBbs/doginfo.jsp?dogname=구름">
-                    <img src="${conPath}/img/dog/dog_스피츠_01.jpg" alt="1">
-                  </a>
-                </div>
-                <div class="info_text">
-                  <h4>
-                    <span>스피츠</span>
-                    <p>구름</p>
-                  </h4>
-                  <p>2023.03월생</p>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="ext_list_cat">
-                <div class="info_img">
-                  <a href="${conPath}/photoBbs/doginfo.jsp?dogname=초코">
-                    <img src="${conPath}/img/dog/dog_시츄_01.jpg" alt="1">
-                  </a>
-                </div>
-                <div class="info_text">
-                  <h4>
-                    <span>시츄</span>
-                    <p>초코</p>
-                  </h4>
-                  <p>2023.06월생</p>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="ext_list_cat">
-                <div class="info_img">
-                  <a href="${conPath}/photoBbs/doginfo.jsp?dogname=짜장">
-                    <img src="${conPath}/img/dog/dog_포메_01.jpg" alt="1">
-                  </a>
-                </div>
-                <div class="info_text">
-                  <h4>
-                    <span>포메라니안</span>
-                    <p>짜장</p>
-                  </h4>
-                  <p>2023.06월생</p>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="ext_list_cat">
-                <div class="info_img">
-                  <a href="가을">
-                    <img src="${conPath}/img/dog/dog_포메_02.jpg" alt="1">
-                  </a>
-                </div>
-                <div class="info_text">
-                  <h4>
-                    <span>포메라니안</span>
-                    <p>가을</p>
-                  </h4>
-                  <p>2023.06월생</p>
-                </div>
-              </div>
-            </li>
-          </ul>
-          <ul>
-            <li>
-              <div class="ext_list_cat">
-                <div class="info_img">
-                  <a href="${conPath}/photoBbs/doginfo.jsp?dogname=모카">
-                    <img src="${conPath}/img/dog/dog_푸들_03.jpg" alt="1">
-                  </a>
-                </div>
-                <div class="info_text">
-                  <h4>
-                    <span>푸들</span>
-                    <p>모카</p>
-                  </h4>
-                  <p>2023.01월생</p>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="ext_list_cat">
-                <div class="info_img">
-                  <a href="${conPath}/photoBbs/doginfo.jsp?dogname=나리">
-                    <img src="${conPath}/img/dog/나리_푸들_02.jpg" alt="1">
-                  </a>
-                </div>
-                <div class="info_text">
-                  <h4>
-                    <span>푸들</span>
-                    <p>나리</p>
-                  </h4>
-                  <p>2023.01월생</p>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="ext_list_cat">
-                <div class="info_img">
-                  <a href="${conPath}/photoBbs/doginfo.jsp?dogname=상아">
-                    <img src="${conPath}/img/dog/상아_말티즈_01.jpg" alt="1">
-                  </a>
-                </div>
-                <div class="info_text">
-                  <h4>
-                    <span>푸들</span>
-                    <p>상아</p>
-                  </h4>
-                  <p>2023.01월생</p>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="ext_list_cat">
-                <div class="info_img">
-                  <a href="${conPath}/photoBbs/doginfo.jsp?dogname=지구">
-                    <img src="${conPath}/img/dog/지구_etc_03.jpg" alt="1">
-                  </a>
-                </div>
-                <div class="info_text">
-                  <h4>
-                    <span>믹스</span>
-                    <p>지구</p>
-                  </h4>
-                  <p>2023.01월생</p>
-                </div>
-              </div>
-            </li>
-          </ul>
+            <c:if test="${not empty dogListMain }">
+          	<c:forEach items="${dogListMain }" var="dog">
+          	<li>
+          		<div class="ext_list_cat">
+          			<div class="info_img">
+          				<c:if test="${not empty admin }">
+          					<a href="${conPath}/petModify.do?petname=${dog.petname}&pettype=${dog.pettype}">
+          						<img src="${conPath }/serverUploader/${dog.petimg}" alt="${dog.petname }이미지" />
+          					</a>
+          				</c:if>
+          				<c:if test="${empty admin }">
+          					<a href="contactWriteView.do?petname=${dog.petname}&petbrads=${dog.petbrads}">
+          						<img src="${conPath }/serverUploader/${dog.petimg}" alt="${dog.petname }이미지" />
+          					</a>
+          				</c:if>
+          			</div>
+          			<div class="info_text">
+          				<h4>
+          					<span>${dog.petbrads }</span>
+          					<p>${dog.petname }</p>
+          				</h4>
+          					<p>등록일 : ${dog.petupdate }</p>
+          				</div>
+          			</div>
+          		</li>
+          	</c:forEach>
+          </c:if>
+      	</ul>
       </div>
 		</div>
-	</div>
 <br><br>
 <jsp:include page="footer.jsp"/>
 <script src="${conPath}/js/slide.js"></script>
 </body>
 </html>
-
-
-
-
-

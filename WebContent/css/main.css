@@ -109,28 +109,28 @@ body {
 }
 
 .ext_list_cat:hover {
-	transform: scale(1.05); /* 아이템 호버 시 확대 효과 추가 */
+	transform: scale(1.05);
 }
 
 .info_img a img {
 	width: 100%;
 	height: auto;
-	display: block; /* 이미지를 블록 요소로 변경하여 간격 제어 */
+	display: block;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 }
 
 .info_text {
 	padding: 10px;
-	background-color: #f8f8f8; /* 아이템 배경색 변경 */
+	background-color: #f8f8f8;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 	text-align: center;
 }
 
 .info_text span {
-	background-color: #ff66b2; /* 아이템 분류 배경색 변경 */
-	color: #fff; /* 아이템 분류 텍스트 색상 변경 */
+	background-color: #ff66b2; 
+	color: #fff;
 	font-weight: bold;
 	padding: 5px;
 	display: inline-block;
@@ -138,13 +138,12 @@ body {
 }
 
 .info_text h4 > p {
-	font-size: 1.2em; /* 이름 및 별명 텍스트 크기 조정 */
+	font-size: 1.2em;
 	font-weight: bold;
 	margin: 5px 0;
 }
 
 .info_text > p {
-	font-size: 1.1em; /* 날짜 텍스트 크기 조정 */
+	font-size: 1.1em;
 	font-weight: bold;
-	color: #999; /* 날짜 텍스트 색상 변경 */
-}
+	color: #999;

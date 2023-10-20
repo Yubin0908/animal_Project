@@ -15,11 +15,11 @@
 	<div id="header" class="fixed_header">
 		<div id="lnb">
 			<div class="lnb_left">
-				<c:if test="${empty member}">
+				<c:if test="${empty member && empty admin}">
 					<ul>
 						<li><a href="${conPath}/loginView.do">로그인</a></li>
-						<li><a href="${conPath}/joinView.do">회원가입</a></li>
-						<li><a href="${conPath}/sub/custom.jsp">고객센터</a></li>
+						<li><a href="${conPath}/joinAgree.do">회원가입</a></li>
+						<li><a href="/">고객센터</a></li>
 					</ul>
 				</c:if>
 				<ul>
@@ -36,26 +36,31 @@
 							</c:if>
 							<a href="#" style="color:#ff3399;">
 								<c:choose>
-									<c:when test="${fn:length(aname) >= 5}">
-										${aname} 네<br> ${nickname}
-									</c:when>
-									<c:otherwise>
-										${aname} 네 ${nickname}님 환영합니다!
-									</c:otherwise>
+								  <c:when test="${fn:length(aname) >= 5}">
+								    ${aname} 네<br> ${nickname}
+								  </c:when>
+								  <c:otherwise>
+								    ${aname} 네 ${nickname}님 환영합니다!
+								  </c:otherwise>
 								</c:choose>
 							</a><br><a href="${conPath}/logout.do" style="margin: 0 20px 0 0;">로그아웃</a><a
-										href="${conPath}/sub/memberConfirm.jsp">정보수정</a>
+										href="${conPath}/modifyPwCheck.do">정보수정</a>
 						</c:if>
 						<!-- 관리자 로그인 -->
 						<c:if test="${not empty admin }">
-							${comname}(${comno })님 환영합니다!
-							관리자로 접속하셨습니다.
+							<p style="color:#ff3399;">
+								${admin.comname}(${admin.comno })님 환영합니다!
+								<br />
+								관리자로 접속하셨습니다.
+								<br><a href="${conPath}/logout.do" style="margin: 0 20px 0 0;">로그아웃</a>	
+							</p>
+							
 						</c:if>
 					</li>
 				</ul>
 			</div>
 			<div class="logo">
-				<a href="${conPath}/main/main.jsp"><img src="${conPath}/img/logo/logo_trans.png" alt="logo"></a>
+				<a href="${conPath}/main.do"><img src="${conPath}/img/logo/logo_trans.png" alt="logo"></a>
 			</div>
 			<div class="lnb_right">
 				<form>
@@ -71,33 +76,19 @@
 						<li><a href="#">멍이랑 냥이랑</a>
 							<div class="gnb_depth gnb_depth_01">
 								<ul>
-									<li><a href="${conPath}/sub/about.jsp">About</a></li>
+									<li><a href="${conPath}/about.do">About</a></li>
 								</ul>
 							</div>
 						</li>
 					</ul>
 				</div>
-				<div class="gnb_menu gnb_dog">
+				<div class="gnb_menu gnb_pet">
 					<ul>
-						<li><a href="#">강아지</a>
+						<li><a href="#">분양 게시판</a>
 							<div class="gnb_depth gnb_depth_02">
 								<ul>
-									<li><a href="${conPath}/photoBbs/dog_all.jsp">전체 보기</a></li>
-									<li><a href="${conPath}/dog_type.jsp">견종별 보기</a></li>
-									<li><a href="${conPath}/dog_loc.jsp">지점별 보기</a></li>
-								</ul>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="gnb_menu gnb_cat">
-					<ul>
-						<li><a href="#">고양이</a>
-							<div class="gnb_depth gnb_depth_03">
-								<ul>
-									<li><a href="${conPath}/photoBbs/cat_all.jsp">전체 보기</a></li>
-									<li><a href="${conPath}/cat_type.jsp">묘종별 보기</a></li>
-									<li><a href="${conPath}/cat_loc.jsp">지점별 보기</a></li>
+									<li><a href="${conPath}/petList.do?pettype=강아지">강아지</a></li>
+									<li><a href="${conPath}/petList.do?pettype=고양이">고양이</a></li>
 								</ul>
 							</div>
 						</li>
@@ -108,9 +99,8 @@
 						<li><a href="#">고객 게시판</a>
 							<div class="gnb_depth gnb_depth_04">
 								<ul>
-									<li><a href="${conPath}/interview.jsp">가족 인터뷰</a></li>
-									<li><a href="${conPath}/review.jsp">가족 리뷰</a></li>
-									<li><a href="${conPath}/textBbs/contact.jsp">분양문의 게시판</a></li>
+									<li><a href="${conPath}/">고객 리뷰</a></li>
+									<li><a href="${conPath}/contactList.do">분양문의 게시판</a></li>
 								</ul>
 							</div>
 						</li>

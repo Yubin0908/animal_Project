@@ -20,7 +20,7 @@
     </div>
     <div class="join_step"><p>이용약관동의</p></div>
     <div class="col-area">
-      <form action="${conPath}/sub/joinForm.jsp" method="post">
+      <form action="${conPath}/joinView.do" method="post">
         <div class="col-area-title">이용약관</div>
         <div class="col-area-text">
           <textarea class="nosize" cols="60" rows="30" readonly>

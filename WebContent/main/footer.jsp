@@ -16,7 +16,7 @@
     <hr>
     <div id="footer_wrap">
       <div class="logo_f">
-        <a href="#"><img src="${conPath}/img/logo/logo_trans.png" alt="logo"></a>
+        <a href="${conPath }/adminLoginView.do"><img src="${conPath}/img/logo/logo_trans.png" alt="logo"></a>
       </div>
       <div class="info">
         <div class="customer">
