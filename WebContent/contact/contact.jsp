@@ -8,13 +8,12 @@
 </head>
 <body>
 <jsp:include page="../main/header.jsp"/>
-	<c:if test="${not empty pwChkMsg }">
+	<c:if test="${not empty contactPwMsg }">
 		<script>
-			alert('${pwChkMsg}');
+			alert('${contactPwMsg}');
 			history.back();
 		</script>
 	</c:if>
-
 	<div class="container">
 		<h1>${contact.cid }번 문의내용 상세보기</h1>
 		<table>

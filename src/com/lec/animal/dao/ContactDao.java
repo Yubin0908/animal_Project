@@ -79,7 +79,7 @@ public class ContactDao {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = "SELECT COUNT(*) CNT FROM CONTACT WHERE CDATA_STATUS = 1";
+		String sql = "SELECT COUNT(*) CNT FROM CONTACT";
 		try {
 			conn = ds.getConnection();
 			ps = conn.prepareStatement(sql);

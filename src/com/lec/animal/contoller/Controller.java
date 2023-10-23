@@ -144,6 +144,33 @@ public class Controller extends HttpServlet {
 	    	service = new ContactReplyService();
 	    	service.execute(request, response);
 	    	viewPage = "contactList.do";
+	    } else if(command.equals("/reviewList.do")) {
+	    	String pageNum = request.getParameter("pageNum");
+	    	service = new ReviewListService();
+	    	service.execute(request, response);
+	    	viewPage = "bbs/reviewList.jsp";
+	    } else if(command.equals("/review.do")) {
+	    	service = new ReviewService();
+	    	service.execute(request, response);
+	    	viewPage = "bbs/review.jsp";
+	    } else if(command.equals("/reviewWriteView.do")) {
+	    	viewPage = "bbs/reviewWrite.jsp";
+	    } else if(command.equals("/reviewWrite.do")) {
+	    	service = new ReviewWriteService();
+	    	service.execute(request, response);
+	    	viewPage = "reviewList.do";
+	    } else if(command.equals("/reviewModifyView.do")) {
+	    	service = new ReviewModifyViewService();
+	    	service.execute(request, response);
+	    	viewPage = "bbs/reviewModify.jsp";
+	    } else if(command.equals("/reviewModify.do")) {
+	    	service = new ReviewModifyService();
+	    	service.execute(request, response);
+	    	viewPage = "reviewList.do";
+	    } else if(command.equals("/reviewDelete.do")) {
+	    	service = new ReviewDeleteService();
+	    	service.execute(request, response);
+	    	viewPage = "reviewList.do";
 	    }
 	    		
 	    

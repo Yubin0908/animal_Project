@@ -14,7 +14,13 @@ public class ContactService implements Service {
 		int cpw = Integer.parseInt(request.getParameter("cpw"));
 		ContactDao cDao = ContactDao.getinstance();
 		ContactDto contact = cDao.getContact(cid, cpw);
-		request.setAttribute("contact", contact);
+		
+		if(contact != null) {
+			request.setAttribute("contact", contact);
+		} else {
+			request.setAttribute("contactPwMsg", "비밀번호가 일치하지 않습니다. 비밀번호를 확인하세요.");
+		}
+		
 
 	}
 

@@ -8,26 +8,17 @@
 	<link rel="stylesheet" href="${conPath}/css/bbs.css">
 </head>
 <body>
-<c:if test="${not empty modifyContactResult }">
-	<script>
-		alert('${modifyContactResult}');
-	</script>
-</c:if>
-<c:if test="${not empty replyResult }">
-	<script>
-		alert('${replyResult}');
-	</script>
-</c:if>
-<jsp:include page="../main/header.jsp"/>
-	<c:if test="${not empty ContactResult }">
+	<c:if test="${not empty ReviewAddResult }">
 		<script>
-			alert('${ContactResult}');
+			alert('${ReviewAddResult}');
 		</script>
 	</c:if>
+<jsp:include page="../main/header.jsp" />
 	<div id="sub-title">
-    <p class="desc">분양 문의 게시판</p>
+    <p class="desc">고객 리뷰 게시판</p>
   </div>
   <div id="bbs_wrap">
+  	<button onclick="location.href='${conPath}/reviewWriteView.do'" class="btn-write">리뷰 작성</button>
   	<table class="bbs_table">
   		<colgroup>
         <col width="10%">
@@ -41,24 +32,23 @@
       	<th>제목</th>
       	<th>작성자</th>
       	<th>작성일</th>
-      	<th>상태</th>
+      	<th>첨부파일</th>
       </tr>
-      <c:forEach items="${contactList }" var="contact">
+      <c:forEach items="${reviewList }" var="review">
       	<tr>
-      		<td>${contact.cid }</td>
+      		<td>${review.rid }</td>
       		<td>
-      			<c:forEach var="i" begin="1" end="${contact.cindent }">
-								<c:if test="${i eq contact.cindent }">└─</c:if>
-								<c:if test="${i ne contact.cindent }"> &nbsp;&nbsp;</c:if>
-							</c:forEach>
-							<a href="${conPath }/contactPw.do?cid=${contact.cid}&cpw=${contact.cpw}">${contact.ctitle }</a>
+      			<a href="${conPath }/review.do?rid=${review.rid}&pageNum=${pageNum}">${review.rtitle }</a>
       		</td>
-      		<td>${contact.cwriter }</td>
-      		<td>${contact.cdate }</td>
+      		<td>${review.name }</td>
+      		<td>${review.rdate }</td>
       		<td>
-      			<c:if test="${contact.cdata_status eq 1 }"><b class="status_block">답변 대기중</b></c:if>
-      			<c:if test="${contact.cdata_status eq 2 }"><b class="status_block">답변 완료</b></c:if>
-      			<c:if test="${contact.cdata_status eq 3 }"><b class="status_block">${contact.cgroup}번 답변</b></c:if>
+      			<c:if test="${empty review.rimg }">
+      				없음
+      			</c:if>
+      			<c:if test="${not empty review.rimg }">
+      				<img src="${conPath }/img/ico/image-con.png" alt="이미지 첨부 아이콘" style="width:20px; height:20px;"/>
+      			</c:if>
       		</td>
       	</tr>
       </c:forEach>
@@ -66,7 +56,7 @@
   </div>
   <div class="paging">
 	  <c:if test="${startPage > BLOCKSIZE }">
-	    <a href="${conPath }/contactList.do?pageNum=${startPage-BLOCKSIZE}">
+	    <a href="${conPath }/reviewList.do?pageNum=${startPage-BLOCKSIZE}">
 	      <img src="${conPath }/img/ico/left_arrow_1.png" alt="이전 화살표" />
 	    </a>
 	  </c:if>
@@ -76,12 +66,12 @@
 	        <b> [ ${i } ]&nbsp;</b>
 	      </c:when>
 	      <c:otherwise>
-	        [ <a href="${conPath }/contactList.do?pageNum=${i}">${i }</a> ]&nbsp;
+	        [ <a href="${conPath }/reviewList.do?pageNum=${i}">${i }</a> ]&nbsp;
 	      </c:otherwise>
 	    </c:choose>
 	  </c:forEach>
 	  <c:if test="${endPage < page }">
-	    <a href="${conPath }/contactList.do?pageNum=${endPage+1}">
+	    <a href="${conPath }/reviewList.do?pageNum=${endPage+1}">
 	      <img src="${conPath }/img/ico/right_arrow_1.png" alt="다음 화살표" />
 	    </a>
 	  </c:if>

@@ -64,7 +64,7 @@
 					<tr>
 						<td>
 							당담자
-								<input type="text" name="cwriter" value="${admin.comname }(${admin.comno})" readonly>				
+								<input type="text" name="cwriter" value="${admin.comname }" readonly>				
 						</td>
 					</tr>
 					<tr>

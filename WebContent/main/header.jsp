@@ -99,7 +99,7 @@
 						<li><a href="#">고객 게시판</a>
 							<div class="gnb_depth gnb_depth_04">
 								<ul>
-									<li><a href="${conPath}/">고객 리뷰</a></li>
+									<li><a href="${conPath}/reviewList.do">고객 리뷰</a></li>
 									<li><a href="${conPath}/contactList.do">분양문의 게시판</a></li>
 								</ul>
 							</div>

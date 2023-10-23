@@ -35,7 +35,7 @@ body {
   flex-wrap: wrap;
   /* justify-content: space-between; */
   gap: 25px;
-  padding: 100px 70px 200px 70px;
+  padding: 100px 70px 100px 70px;
 }
 
 .card {
@@ -84,23 +84,37 @@ body {
 }
 
 .paging {
-	text-align: center;
-	margin-bottom: 20px;
-	height: 30px;
-	line-height: 30px;
-}
-.paging img {
-	width: 25px;
-	line-height: 30px;
+  text-align: center;
+  margin-bottom: 60px;
 }
 
-.admin_menu {
-	width: 300px;
-	margin-top: 30px;
-	margin-left: 50px;
-	text-align: center;
+.paging img {
+  width: 25px;
+  height: auto;
+  vertical-align: middle;
+  margin: 0 5px;
 }
-.admin_menu fieldset {
-	padding: 15px;
-	border-radius: 20px;
+
+.paging a {
+  text-decoration: none;
+  color: #ff3399;
+  font-weight: bold;
+  font-size: 16px;
+  margin: 0 5px;
+  transition: color 0.3s ease;
+}
+
+.paging a:hover {
+  color: #ff66b2;
+}
+
+.paging b {
+  font-size: 18px;
+  color: #ff3399;
+  font-weight: bold;
+  margin: 0 5px;
+}
+
+.paging a:visited {
+  color: #ff66b2;
 }
