@@ -57,6 +57,11 @@
 					</c:if>
 				</td>
 			</tr>
+			<tr>
+				<td colspan="2">
+					<button style="padding: 15px 30px; cursor: pointer;" onclick="location.href='${conPath}/contactList.do'">목록</button>
+				</td>
+			</tr>
 		</table>
 	</div>
 <jsp:include page="../main/footer.jsp"/>

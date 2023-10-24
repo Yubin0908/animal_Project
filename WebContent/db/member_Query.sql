@@ -7,7 +7,7 @@
   -- (3) DTO 가져오기 (CUSTOMER_PET JOIN)
   SELECT M.*, P.* 
     FROM MEMBER M, CUSTOMER_PET P
-    WHERE M.ID = P.ID AND M.ID = 'jang0908';
+    WHERE M.ID = P.ID AND M.ID = 'bin12345';
   -- (4) 회원정보 수정 전 비밀번호 체크
   SELECT PW FROM MEMBER WHERE ID = 'kim12345';
   -- (5) 회원정보 수정
@@ -51,21 +51,37 @@
   
   -- [고객 리뷰 게시판 관련 쿼리 - REVIEW] --
   -- (1) 리스트 출력(paging)
+  SELECT * FROM
+    (SELECT ROWNUM RN, RPAD(SUBSTR(NAME,0,1),LENGTH(NAME), '*') NAME, A.* FROM REVIEW A, MEMBER M
+    WHERE A.ID = M.ID ORDER BY RID DESC)
+    WHERE RN BETWEEN 1 AND 30;
   -- (2) 리뷰 상세보기
   -- (3) 리뷰 작성
   -- (4) 리뷰 수정
   -- (5) 리뷰 삭제
-  
-  
+  DELETE FROM REVIEW;
   
   -- [공지사항 게시판 관련 쿼리 - NOTICE] --
   -- (1) 리스트 출력(paging)
+  SELECT * FROM
+  (SELECT ROWNUM RN, A.* FROM (SELECT * FROM NOTICE ORDER BY NID DESC) A)
+  WHERE RN BETWEEN 1 AND 20;
   -- (2) 공지사항 상세보기
+  SELECT * FROM NOTICE WHERE NID = 1;
   -- (3) 공지사항 작성
+  INSERT INTO NOTICE VALUES (NOTICE_SEQ.NEXTVAL ,100001, SYSDATE, '공지사항 테스트', '본문 테스트', NULL, '192.168.0.1');
   -- (4) 공지사항 수정
+  UPDATE NOTICE SET 
+    NDATE = SYSDATE,
+    NTITLE = '수정공지사항',
+    NTEXT = '수정본문',
+    NIMG = NULL,
+    NIP = '111.9.0.1'
+    WHERE NID = 1;
   -- (5) 공지사항 삭제
-  
-  
+  DELETE FROM NOTICE WHERE NID = 1;
+  -- (6) 리스트 갯수
+  SELECT COUNT(*) CNT FROM NOTICE;
   
   -- [분양 게시판(리스트) 관련 쿼리 - LOCAL_PET] -- 
   -- (1) 리스트 출력(paging)
@@ -75,4 +91,4 @@
   
   
   
-  
+  COMMIT;

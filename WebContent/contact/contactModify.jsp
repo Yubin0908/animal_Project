@@ -84,7 +84,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td><input type="submit" value="문의하기"></td>
+						<td><input type="submit" value="수정하기"></td>
 					</tr>
 				</table>
 			</form>

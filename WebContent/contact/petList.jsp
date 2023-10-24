@@ -33,6 +33,9 @@
 		<c:if test="${pettype eq '강아지' }">
 			<div id="pet_filter">
 				<div class="filter_menu">
+					<div class="sub-title">
+						<p>우리집 강아지는 어디에 있을까?</p>
+					</div>
 					<a href="${conPath }/petList.do?pettype=${pettype}">전체보기</a> 
 					<a href="${conPath }/petList.do?petbrads=푸들&pettype=${pettype}">푸들</a> 
 					<a href="${conPath }/petList.do?petbrads=말티즈&pettype=${pettype}">말티즈</a> 
@@ -48,6 +51,9 @@
 		<c:if test="${pettype eq '고양이' }">
 			<div id="pet_filter">
 				<div class="filter_menu">
+					<div class="sub-title">
+						<p>우리집 고양이는 어디에 있을까?</p>
+					</div>
 					<a href="${conPath }/petList.do?pettype=${pettype}">전체보기</a> 
 					<a href="${conPath }/petList.do?petbrads=노르웨이숲&pettype=${pettype}">노르웨이숲</a> 
 					<a href="${conPath }/petList.do?petbrads=브리티쉬&pettype=${pettype}">브리티쉬</a> 

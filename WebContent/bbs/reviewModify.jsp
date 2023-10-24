@@ -21,7 +21,7 @@
             border: 1px solid #eee;
             border-radius: 20px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            width: 400px;
+            width: 1000px;
             margin: 20px auto;
             padding: 20px;
         }
@@ -89,18 +89,23 @@
 </body>
 </html>
 <script>
-    tinymce.init({
-        selector: 'textarea',
-        plugins: 'ai tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss',
-        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-        tinycomments_mode: 'embedded',
-        tinycomments_author: 'Author name',
-        mergetags_list: [
-            { value: 'First.Name', title: 'First Name' },
-            { value: 'Email', title: 'Email' },
-        ],
-        ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant"))
-    });
+	tinymce.init({
+	    selector: 'textarea',
+	    plugins: 'autolink code link autoresize paste contextmenu image preview',
+	    toolbar: 'undo redo | fintsizeselect | forecolor | bold italic strikethrough underline | alignleft aligncenter alignright alignjustify | tinycomments | bullist numlist outdent indent | link custom_image | code preview',
+	    fintsize_formats: '8px 10px 12px 14px 16px 18px 20px 22px 24px 26px 28px 30px 36px 40px 48px',
+	    tinycomments_mode: 'embedded',
+	    tinycomments_author: 'Author name',
+	    fullpage_default_font_size: "16px",
+	    paste_as_text: true,
+	    paste_data_images: true,
+	    branding: false,
+	    language: "ko_KR",
+	    menubar: false,
+	    min_height: 800,
+	    max_height: 800,
+	    content_style: 'body { text-align: center; }',
+	});
 </script>
 
 

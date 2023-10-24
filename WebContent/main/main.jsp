@@ -23,6 +23,18 @@
   		alert('${joinResult}');
   	</script>
   </c:if>
+  <!-- 회원탈퇴 Msg -->
+  <c:if test="${not empty WithdrawResult }">
+	  <script>
+	  	alert('${WithdrawResult}');
+	  </script>
+  </c:if>
+  <!-- 회원정보수정 Msg -->
+  <c:if test="${not empty modifyMemberResult }">
+  	<script>
+  		alert('${modifyMemberResult}');
+  	</script>
+  </c:if>
   <br><br>
 	<div id="wrap">
 		<div id="container">

@@ -5,59 +5,61 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.sql.Date;
 import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.lec.animal.dao.NoticeDao;
 import com.lec.animal.dao.ReviewDao;
+import com.lex.animal.dto.AdminDto;
 import com.lex.animal.dto.MemberDto;
+import com.lex.animal.dto.NoticeDto;
 import com.lex.animal.dto.ReviewDto;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class ReviewWriteService implements Service {
+public class NoticeWriteService implements Service {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		String path = request.getRealPath("serverUploader");
-		int maxSize = 1024 * 1024 * 5;
+		int maxSize = 1024 * 1024 * 10;
 		MultipartRequest mRequest = null;
-		String rimg = "";
-		int result = ReviewDao.FAIL;
+		String nimg = "";
+		int result = NoticeDao.FAIL;
 		try {
 			mRequest = new MultipartRequest(request, path, maxSize, "utf-8", new DefaultFileRenamePolicy());
 			Enumeration<String> params = mRequest.getFileNames();
 			String param = params.nextElement();
-			rimg = mRequest.getFilesystemName(param);
+			nimg = mRequest.getFilesystemName(param);
 			HttpSession httpSession = request.getSession();
-			MemberDto member = (MemberDto)httpSession.getAttribute("member");
-			String id = member.getId();
-			String rtitle = mRequest.getParameter("rtitle");
-			String rtext = mRequest.getParameter("rtext");
-			String rip = request.getRemoteAddr();
-			ReviewDao rDao = ReviewDao.getinstance();
-			ReviewDto review = new ReviewDto(null, 0, id, null, rtitle, rtext, rimg, rip, 1);
-			result = rDao.ReviewAdd(review);
-			if(result == ReviewDao.PASS) {
-				request.setAttribute("ReviewAddResult", "리뷰 작성 감사합니다.");
+			AdminDto admin = (AdminDto)httpSession.getAttribute("admin");
+			int comno = admin.getComno();
+			String ntitle = mRequest.getParameter("ntitle");
+			String ntext = mRequest.getParameter("ntext");
+			String nip = request.getRemoteAddr();
+			NoticeDao nDao = NoticeDao.getInstance();
+			NoticeDto notice = new NoticeDto(0, comno, null, ntitle, ntext, nimg, nip);
+			result = nDao.addNotice(notice);
+			if(result == NoticeDao.PASS) {
+				request.setAttribute("NoticeMsg", "공지사항이 등록되었습니다.");
 			} else {
-				request.setAttribute("ReviewAddResult", "리뷰 등록에 실패하였습니다.");
+				request.setAttribute("ReviewAddResult", "공지사항이 등록되지 않았습니다.");
 			}
 		} catch (Exception e) {
-			System.out.println(e.getMessage() + "addReview 에러");
+			System.out.println(e.getMessage() + "addNotice 에러");
 		}
 		
-		if(rimg != null && result == ReviewDao.PASS) {
+		if(nimg != null && result == ReviewDao.PASS) {
 			InputStream is = null;
 			OutputStream os = null;
 			
 			try {
-				File serverFile = new File(path+"/"+rimg);
+				File serverFile = new File(path+"/"+nimg);
 				is = new FileInputStream(serverFile);
-				os = new FileOutputStream("D:/Project/source/08_1stProject/animal/WebContent/serverUploader/"+rimg);
+				os = new FileOutputStream("D:/Project/source/08_1stProject/animal/WebContent/serverUploader/"+nimg);
 				byte[] bs = new byte[(int)serverFile.length()];
 				while(true) {
 					int mByteCnt = is.read(bs);
@@ -75,7 +77,6 @@ public class ReviewWriteService implements Service {
 				}
 			}
 		}
-
 	}
 
 }

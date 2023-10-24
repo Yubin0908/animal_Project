@@ -75,6 +75,16 @@ public class Controller extends HttpServlet {
 	    	viewPage = "user/findid.jsp";
 	    } else if(command.equals("/findAccountpw.do")) {
 	    	viewPage = "user/findpw.jsp";
+	    } else if(command.equals("/modifyAccount.do")) {
+	    	service = new ModifyAccountService();
+	    	service.execute(request, response);
+	    	viewPage = "main.do";
+	    } else if(command.equals("/withdrawAccount.do")) {
+	    	service = new WithdrawAccountService();
+	    	service.execute(request, response);
+	    	viewPage = "main.do";
+	    } else if(command.equals("/hotelService.do")) {
+	    	viewPage = "content/hotel.jsp";
 	    }
 	    
 	    
@@ -171,9 +181,38 @@ public class Controller extends HttpServlet {
 	    	service = new ReviewDeleteService();
 	    	service.execute(request, response);
 	    	viewPage = "reviewList.do";
+	    } else if(command.equals("/noticeList.do")) {
+	    	service = new NoticeListService();
+	    	service.execute(request, response);
+	    	viewPage = "bbs/noticeList.jsp";
+	    } else if(command.equals("/notice.do")) {
+	    	service = new NoticeService();
+	    	service.execute(request, response);
+	    	viewPage = "bbs/notice.jsp";
+	    } else if(command.equals("/noticeDelete.do")) {
+	    	service = new NoticeDeleteService();
+	    	service.execute(request, response);
+	    	viewPage = "noticeList.do";
+	    } else if(command.equals("/noticeWriteView.do")) {
+	    	viewPage = "bbs/noticeWrite.jsp";
+	    } else if(command.equals("/noticeWrite.do")) {
+	    	service = new NoticeWriteService();
+	    	service.execute(request, response);
+	    	viewPage = "noticeList.do";
+	    } else if(command.equals("/noticeModifyView.do")) {
+	    	service = new NoticeModifyViewService();
+	    	service.execute(request, response);
+	    	viewPage = "bbs/noticeModify.jsp";
+	    } else if(command.equals("/noticeModify.do")) {
+	    	service = new NoticeModifyService();
+	    	service.execute(request, response);
+	    	viewPage = "noticeList.do";
 	    }
 	    		
-	    
+	    // Exception rediretion
+	    else if(command.equals("/e404.do")) {
+	    	viewPage = "except/e404.jsp";
+	    }
 	    
 	    
 	    RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

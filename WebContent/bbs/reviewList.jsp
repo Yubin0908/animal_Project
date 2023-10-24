@@ -15,7 +15,7 @@
 	</c:if>
 <jsp:include page="../main/header.jsp" />
 	<div id="sub-title">
-    <p class="desc">고객 리뷰 게시판</p>
+    <p class="desc">멍이랑 냥이랑 고객리뷰</p>
   </div>
   <div id="bbs_wrap">
   	<button onclick="location.href='${conPath}/reviewWriteView.do'" class="btn-write">리뷰 작성</button>
@@ -25,32 +25,24 @@
         <col width="+%">
         <col width="12%">
         <col width="15%">
-        <col width="15%">
       </colgroup>
       <tr>
       	<th>번호</th>
       	<th>제목</th>
       	<th>작성자</th>
       	<th>작성일</th>
-      	<th>첨부파일</th>
       </tr>
+      <c:set var="no" value="${orderNo }"/>
       <c:forEach items="${reviewList }" var="review">
       	<tr>
-      		<td>${review.rid }</td>
+      		<td>${no }</td>
       		<td>
       			<a href="${conPath }/review.do?rid=${review.rid}&pageNum=${pageNum}">${review.rtitle }</a>
       		</td>
       		<td>${review.name }</td>
       		<td>${review.rdate }</td>
-      		<td>
-      			<c:if test="${empty review.rimg }">
-      				없음
-      			</c:if>
-      			<c:if test="${not empty review.rimg }">
-      				<img src="${conPath }/img/ico/image-con.png" alt="이미지 첨부 아이콘" style="width:20px; height:20px;"/>
-      			</c:if>
-      		</td>
       	</tr>
+      	<c:set var="no" value="${no-1 }"/>
       </c:forEach>
   	</table>
   </div>

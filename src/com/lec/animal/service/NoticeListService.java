@@ -5,30 +5,26 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.lec.animal.dao.ReviewDao;
-import com.lex.animal.dto.ReviewDto;
+import com.lec.animal.dao.NoticeDao;
+import com.lex.animal.dto.NoticeDto;
 
-public class ReviewListService implements Service {
+public class NoticeListService implements Service {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		String pageNum = request.getParameter("pageNum");
+		final int PAGESIZE = 5, BLOCKSIZE = 5;
 		if(pageNum == null) {
-			if(request.getAttribute("pageNum")!=null) {
-				pageNum = (String)request.getAttribute("pageNum");
-			} else {
-				pageNum = "1";
-			}
+			pageNum = "1";
 		}
+		
 		int currPage = Integer.parseInt(pageNum);
-		final int PAGESIZE = 10, BLOCKSIZE = 5;
 		int startRow = (currPage - 1) * PAGESIZE + 1;
 		int endRow = startRow + PAGESIZE - 1;
-		ReviewDao rDao = ReviewDao.getinstance();
-		ArrayList<ReviewDto> reviewList = rDao.listReview(startRow, endRow);
-		request.setAttribute("reviewList", reviewList);
-		int cnt = rDao.getReviewCnt();
-		int orderNo = cnt - startRow + 1;
+		NoticeDao nDao = NoticeDao.getInstance();
+		ArrayList<NoticeDto> listNotice = nDao.listNotice(startRow, endRow);
+		request.setAttribute("listNotice", listNotice);
+		int cnt = nDao.getNoticeCnt();
 		int page = (int)Math.ceil((double)cnt / PAGESIZE);
 		int startPage = ((currPage - 1) / BLOCKSIZE) * BLOCKSIZE + 1;
 		int endPage = startPage + BLOCKSIZE - 1;
@@ -41,7 +37,6 @@ public class ReviewListService implements Service {
 		request.setAttribute("page", page);
 		request.setAttribute("cnt", cnt);
 		request.setAttribute("pageNum", pageNum);
-		request.setAttribute("orderNo", orderNo);
 	}
 
 }

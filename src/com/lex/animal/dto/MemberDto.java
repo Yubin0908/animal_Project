@@ -19,8 +19,22 @@ public class MemberDto {
 	private Date adate;
 	
 	public MemberDto(String id, String pw, String name, String loctel, String midtel, String lastel, String email,
+			String address, String nickname, Date regidate, int account_status) {
+		this.id = id;
+		this.pw = pw;
+		this.name = name;
+		this.loctel = loctel;
+		this.midtel = midtel;
+		this.lastel = lastel;
+		this.email = email;
+		this.address = address;
+		this.nickname = nickname;
+		this.regidate = regidate;
+		this.account_status = account_status;
+	}
+
+	public MemberDto(String id, String pw, String name, String loctel, String midtel, String lastel, String email,
 			String address, String nickname, Date regidate, int account_status, int petno, String aname, Date adate) {
-		super();
 		this.id = id;
 		this.pw = pw;
 		this.name = name;

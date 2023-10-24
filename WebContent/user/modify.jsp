@@ -16,74 +16,6 @@
   		color : blue;
   	}
   </style>
-  <script>
-  	$(function() { // ID 8 ~ 20 자리
-  		$('input[name="id"]').keyup(function() {
-  			var id = $(this).val();
-  			if(id.length < 8 || id.length > 20) {
-  				$('#idConfirmResult').text('ID는 8~20자리 이내로 입력해주세요.');
-  				$('.item_name > #idConfirmResult').addClass('red');
-  				$('.item_name > #idConfirmResult').removeClass('blue');
-  			} else {
-  				$('.item_name > #idConfirmResult').addClass('blue');
-  				$('.item_name > #idConfirmResult').removeClass('red');
-  				$.ajax({
-  					url : '${conPath}/idConfirm.do',
-  					type : 'get',
-  					data : 'id='+id,
-  					dataType : 'html',
-  					success : function(data) {
-  						$('#idConfirmResult').html(data);
-  					},
-  				});
-  			}
-  		});
-  		$('input[name="pw"], input[name="pwchk"]').keyup(function() {
-  			var pw = $('input[name="pw"]').val();
-  			var pwchk = $('input[name="pwchk"]').val();
-  			if(pw.length < 8 || pw.length > 20) {
-  				$('#pwCheckResult').text('비밀번호는 8~20자리 이내로 입력하세요.');
-  				$('.item_name > #pwCheckResult').addClass('red');
-  				$('.item_name > #pwCheckResult').removeClass('blue');
-  			} else {
-  				if(pw == pwchk) {
-  	  				$('#pwCheckResult').text('비밀번호가 일치합니다.');
-  	  				$('.item_name > #pwCheckResult').addClass('blue');
-  	  				$('.item_name > #pwCheckResult').removeClass('red');
-  	  			} else {
-  	  				$('#pwCheckResult').text('비밀번호가 일치하지 않습니다.');
-  	  				$('.item_name > #pwCheckResult').addClass('red');
-  	  				$('.item_name > #pwCheckResult').removeClass('blue');
-  	  			}
-  			}
-  		});
-  		var email_p = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-  		$('input[name="email"]').keyup(function() {
-  			var email = $(this).val();
-  			if(!email.match(email_p)) {
-  				$('#emailCheckResult').text('메일 형식이 올바르지 않습니다.');
-  				$('.item_name > #emailCheckResult').addClass('red');
-  				$('.item_name > #emailCheckResult').removeClass('blue');
-  			} else {
-  				$('#emailCheckResult').html('&nbsp;');
-  			}
-  		});
-  		$()
-  		$('form').submit(function() {
-  			var idResult = $('#idConfirmResult').text().trim();
-  			var pwResult = $('#pwCheckResult').text().trim();
-  			if(idResult != '사용 가능한 ID 입니다.') {
-  				alert('중복된 아이디로 가입이 불가합니다.');
-  				$('input[name="id"]').focus();
-  				return false();
-  			} else if(pwResult != '비밀번호가 일치합니다.') {
-  				alert('비밀번호를 확인하세요.');
-  				$('input[name="pw"]').focus();
-  				return false();
-  			}
-  		});
-  	});
-  </script>
 	<script>
   $( function() {
     $( "#datepicker" ).datepicker({
@@ -106,58 +38,51 @@
 		</script>
 	</c:if>
   <jsp:include page="../main/header.jsp"/>
+  <br /><br /><br />
   <div id="join_wrap">
-    <form action="${conPath}/join.do" method="post">
+    <form action="${conPath}/modifyAccount.do" method="post">
       <fieldset>
-        <legend>필수입력</legend>
-          <p class="item_name">아이디&nbsp;&nbsp;&nbsp;<a id="idConfirmResult"></a></p>
-          <p><input type="text" name="id" autofocus required></p>
-          <p class="item_name">비밀번호</p>
-          <p><input type="password" name="pw" required></p>
-          <p class="item_name">비밀번호 확인&nbsp;&nbsp;&nbsp;<a id="pwCheckResult"></a></p>
-          <p><input type="password" name="pwchk" required></p>
-          <p class="item_name">이름</p>
-          <p><input type="text" name="name" required></p>
+        <legend>개인정보변경</legend>
           <p class="item_name">이메일&nbsp;&nbsp;&nbsp;<a id="emailCheckResult"></a></p>
-          <p><input type="email" name="email" required></p>
+          <p><input type="email" name="email" required value="${member.email }"></p>
           <p class="item_name">전화번호</p>
-          <p style="text-align: center"><input type="text" name="loctel" style="width: 100px" placeholder="앞번호"> - <input type="text" name="midtel" style="width: 100px" placeholder="중간번호"> - <input type="text" name="lastel" style="width: 100px" placeholder="끝번호"></p>
+          <p style="text-align: center"><input type="text" name="loctel" style="width: 100px" placeholder="앞번호" value="${member.loctel }"> - <input type="text" name="midtel" style="width: 100px" placeholder="중간번호" value="${member.midtel }"> - <input type="text" name="lastel" style="width: 100px" placeholder="끝번호" value="${member.lastel }"></p>
       </fieldset>
       <fieldset>
         <legend>선택입력</legend>
           <p class="item_name">주소</p>
-          <p><input type="text" name="address"/></p>
+          <p><input type="text" name="address" value="${member.address }"/></p>
           <p class="item_name">호칭</p>
           <div class="radio-container">
             <p>
-              <input type="radio" name="nickname" id="radio_1" value="형아"><label for="radio_1" class="label-with-radio">형아</label>
-              <input type="radio" name="nickname" id="radio_2" value="누나"><label for="radio_2" class="label-with-radio">누나</label>
-              <input type="radio" name="nickname" id="radio_3" value="엄마"><label for="radio_3" class="label-with-radio">엄마</label>
-              <input type="radio" name="nickname" id="radio_4" value="아빠"><label for="radio_4" class="label-with-radio">아빠</label>
-              <input type="radio" name="nickname" id="radio_5" value=""><label for="radio_5" class="label-with-radio">기타<input type="text" name="nickname_input" id="nickname_input" disabled></label>
-              <input type="radio" name="nickname" id="radio_6" value="" checked><label for="radio_6" class="label-with-radio">선택안함</label>
+	            <input type="radio" name="nickname" id="radio_1" value="형아"><label for="radio_1" class="label-with-radio">형아</label>
+	            <input type="radio" name="nickname" id="radio_2" value="누나"><label for="radio_2" class="label-with-radio">누나</label>
+	            <input type="radio" name="nickname" id="radio_3" value="엄마"><label for="radio_3" class="label-with-radio">엄마</label>
+	            <input type="radio" name="nickname" id="radio_4" value="아빠"><label for="radio_4" class="label-with-radio">아빠</label>
+	            <input type="radio" name="nickname" id="radio_5" value=""><label for="radio_5" class="label-with-radio">기타<input type="text" name="nickname_input" id="nickname_input" disabled value="${member.nickname }"></label>
+	            <input type="radio" name="nickname" id="radio_6" value=""><label for="radio_6" class="label-with-radio">선택안함</label>
             </p>
           </div>
       </fieldset>
-      <fieldset>
-        <legend>반려동물 정보입력</legend>
-        <p class="item_name">반려동물 이름</p>
-        <p><input type="text" name="aname"></p>
-        <p class="item_name">반려동물 생일</p>
-        <p><input type="text" name="adate" id="datepicker"></p>
-      </fieldset>
       <div class="joinForm_submit">
-        <input type="submit" value="회원가입">
+        <input type="submit" value="회원정보수정">
+        <input type="reset" value="취소" onclick="location.href='main.do'"/>
+        <input type="reset" value="회원탈퇴" onclick="
+        																					 var input =	confirm('회원 탈퇴 시 해당아이디로 재가입이 불가합니다. 정말 탈퇴 하시겠습니까?');
+        																					 if(input == true) {
+        																						 location.href= '${conPath}/withdrawAccount.do';
+        																					 }
+        																				  "/>
       </div>
-      
     </form>
   </div>
+  <br /><br /><br />
   <jsp:include page="../main/footer.jsp"/>
 </body>
 </html>
 
 <script>
-  // JavaScript 코드
+
   var radioButtons = document.querySelectorAll('input[name="nickname"]');
   var input = document.getElementById("nickname_input");
   

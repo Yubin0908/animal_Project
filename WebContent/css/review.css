@@ -36,9 +36,14 @@
     border-collapse: collapse;
 }
 
-.header {
+.review_header {
     border-bottom: 1px solid #ddd;
     padding: 10px 0;
+    
+}
+
+tr td {
+	border-bottom: 1px solid #ddd;
 }
 
 .title {

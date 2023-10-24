@@ -188,25 +188,23 @@ public class MemberDao {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		String sql = "UPDATE MEMBER SET " + 
-				   	"    PW = , " + 
-					"    LOCTEL = , " + 
-					"    MIDTEL = , " + 
-					"    LASTEL = , " + 
-					"    EMAIL = , " + 
-					"    ADDRESS = , " + 
-					"    NICKNAME = " + 
-					"    WHERE ID = ";
+					"    LOCTEL = ?, " + 
+					"    MIDTEL = ?, " + 
+					"    LASTEL = ?, " + 
+					"    EMAIL = ?, " + 
+					"    ADDRESS = ?, " + 
+					"    NICKNAME = ?" + 
+					"    WHERE ID = ?";
 		try {
 			conn = ds.getConnection();
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, member.getPw());
-			ps.setString(2, member.getLoctel());
-			ps.setString(3, member.getMidtel());
-			ps.setString(4, member.getLastel());
-			ps.setString(5, member.getEmail());
-			ps.setString(6, member.getAddress());
-			ps.setString(7, member.getNickname());
-			ps.setString(8, member.getId());
+			ps.setString(1, member.getLoctel());
+			ps.setString(2, member.getMidtel());
+			ps.setString(3, member.getLastel());
+			ps.setString(4, member.getEmail());
+			ps.setString(5, member.getAddress());
+			ps.setString(6, member.getNickname());
+			ps.setString(7, member.getId());
 			result = ps.executeUpdate();
 		} catch (Exception e) {
 			System.out.println(e.getMessage() + "정보수정 에러");

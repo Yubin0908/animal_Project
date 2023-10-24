@@ -107,27 +107,27 @@ label[for="cat"]::before {
 
 input[type="checkbox"]:checked + label[for="dog"]::before,
 input[type="checkbox"]:checked + label[for="cat"]::before {
-  background-color: sandybrown; /* 체크된 상태의 배경색 */
-  border-color: sandybrown; /* 체크된 상태의 테두리 색상 */
+  background-color: sandybrown; 
+  border-color: sandybrown; 
 }
 
 /* Submit Button Styles */
 .joinForm_submit {
   text-align: center;
 }
-input[type="submit"] {
-  background-color: #ccc; /* 배경색 */
-  color: #fff; /* 텍스트 색상 */
-  padding: 10px 20px; /* 내부 여백 */
-  border: none; /* 테두리 없음 */
-  border-radius: 3px; /* 둥근 테두리 */
-  cursor: pointer; /* 커서 모양 변경 */
-  font-size: 16px; /* 폰트 크기 */
+input[type="submit"], input[type="reset"] {
+  background-color: #ccc; 
+  color: #fff; 
+  padding: 10px 20px; 
+  border: none; 
+  border-radius: 3px; 
+  cursor: pointer;
+  font-size: 16px; 
   transition: background-color 0.3s, color 0.3s; /* 애니메이션 효과 */
 
 }
 
 /* Submit Button:Hover */
-input[type="submit"]:hover {
-  background-color: #aaa; /* 호버 시 배경색 변경 */
+input[type="submit"]:hover, input[type="reset"]:hover {
+  background-color: #aaa; 
 }

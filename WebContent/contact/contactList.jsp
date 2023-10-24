@@ -51,7 +51,7 @@
 								<c:if test="${i eq contact.cindent }">└─</c:if>
 								<c:if test="${i ne contact.cindent }"> &nbsp;&nbsp;</c:if>
 							</c:forEach>
-							<a href="${conPath }/contactPw.do?cid=${contact.cid}&cpw=${contact.cpw}">${contact.ctitle }</a>
+							<a href="${conPath }/contactPw.do?cid=${contact.cid}&cpw=${contact.cpw}&pageNum=${pageNum}">${contact.ctitle }</a>
       		</td>
       		<td>${contact.cwriter }</td>
       		<td>${contact.cdate }</td>

@@ -37,7 +37,7 @@
 							<a href="#" style="color:#ff3399;">
 								<c:choose>
 								  <c:when test="${fn:length(aname) >= 5}">
-								    ${aname} 네<br> ${nickname}
+								    ${aname} 네<br> ${nickname} 님 환영합니다!
 								  </c:when>
 								  <c:otherwise>
 								    ${aname} 네 ${nickname}님 환영합니다!
@@ -108,27 +108,20 @@
 				</div>
 				<div class="gnb_menu gnb_service">
 					<ul>
-						<li><a href="#">service</a>
-							<div class="gnb_depth gnb_depth_05">
-								<ul>
-									<li><a href="${conPath}/cat_hotel.jsp">고양이 호텔</a></li>
-									<li><a href="${conPath}/dog_hotel.jsp">강아지 호텔</a></li>
-								</ul>
-							</div>
+						<li><a href="${conPath }/hotelService.do">호텔서비스</a>
 						</li>
 					</ul>
 				</div>
 				<div class="gnb_menu gnb_system">
 					<ul>
-						<li><a href="#">system</a>
-							<div class="gnb_depth gnb_depth_06">
-								<ul>
-									<li><a href="${conPath}/notice.jsp">공지사항</a></li>
-									<li><a href="${conPath}/before.jsp">사전점검 서비스</a></li>
-									<li><a href="${conPath}/sales.jsp">협력업체</a></li>
-									<li><a href="${conPath}/after.jsp">사후 서비스</a></li>
-								</ul>
-							</div>
+						<li><a href="${conPath }/noticeList.do">공지사항</a>
+							<c:if test="${not empty admin }">
+								<div class="gnb_depth gnb_depth_06">
+									<ul>
+										<li><a href="${conPath }/noticeWriteView.do">공지사항 등록</a></li>
+									</ul>
+								</div>
+							</c:if>
 						</li>
 					</ul>
 				</div>
