@@ -1,8 +1,6 @@
-/* 전체 스타일 초기화 및 공통 스타일 */
-@font-face {
-	font-family: 'Nanum_main', sans-serif;
-	src: url(../font/Nanum_main.ttf);
-}
+/* 전역 설정 */
+@import url('https://fonts.googleapis.com/css2?family=Dongle&display=swap');
+
 * {
 	margin: 0;
 	padding: 0;
@@ -10,7 +8,6 @@
 }
 
 body {
-	font-family: 'Nanum_main', sans-serif;
 	background-color: #f8f8f8; /* 페이지 전체 배경색 변경 */
 }
 
@@ -85,10 +82,13 @@ body {
 	width: 100%;
 	text-align: center;
 	margin-bottom: 30px; /* Ext List와 다음 내용 사이 여백 추가 */
+
+
 }
 
 .ext_list_title {
-	font-size: 2.5em; /* Ext List 제목 크기 조정 */
+	font-family: 'Dongle', sans-serif;
+	font-size: 4em; /* Ext List 제목 크기 조정 */
 	margin-bottom: 10px;
 	color: #ff66b2; /* Ext List 제목 색상 변경 */
 }
@@ -106,6 +106,7 @@ body {
 	width: calc(25% - 20px); /* Ext List 아이템 너비 및 간격 조정 */
 	margin: 10px;
 	transition: transform 0.3s ease-in-out;
+
 }
 
 .ext_list_cat:hover {
@@ -135,6 +136,9 @@ body {
 	padding: 5px;
 	display: inline-block;
 	margin-bottom: 5px;
+	border-radius: 5px;
+	text-align: center;
+	padding-left: 5px;
 }
 
 .info_text h4 > p {
@@ -147,3 +151,4 @@ body {
 	font-size: 1.1em;
 	font-weight: bold;
 	color: #999;
+}

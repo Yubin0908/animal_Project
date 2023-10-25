@@ -86,8 +86,6 @@ public class Controller extends HttpServlet {
 	    } else if(command.equals("/hotelService.do")) {
 	    	viewPage = "content/hotel.jsp";
 	    }
-	    
-	    
 	    // 메뉴할당
 	    else if(command.equals("/about.do")) {
 	    	viewPage = "content/about.jsp";
@@ -207,8 +205,27 @@ public class Controller extends HttpServlet {
 	    	service = new NoticeModifyService();
 	    	service.execute(request, response);
 	    	viewPage = "noticeList.do";
+	    } else if(command.equals("/commentWrite.do")) {
+	    	service = new CommentWriteService();
+	    	service.execute(request, response);
+	    	viewPage = "notice.do";
+	    } else if(command.equals("/commentModifyView.do")) { // 구현중
+	    	service = new CommentModifyVIewService();
+	    	service.execute(request, response);
+	    	viewPage = "notice.do";
+	    } else if(command.equals("/commentReply.do")) {
+	    	service = new CommentReplyService();
+	    	service.execute(request, response);
+	    	viewPage = "notice.do";
+	    } else if(command.equals("/commentModify.do")) { // 구현중
+	    	service = new CommentModifyService();
+	    	service.execute(request, response);
+	    	viewPage = "notice.do";
+	    } else if(command.equals("/commentDelete.do")) {
+	    	service = new CommentDeleteService();
+	    	service.execute(request, response);
+	    	viewPage = "notice.do";
 	    }
-	    		
 	    // Exception rediretion
 	    else if(command.equals("/e404.do")) {
 	    	viewPage = "except/e404.jsp";

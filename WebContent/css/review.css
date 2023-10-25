@@ -94,3 +94,142 @@ tr td {
 .btn-back:hover {
     background-color: #ff66b2;
 }
+
+/* comment Style */
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+.comment_wrap {
+	margin-top: 20px;
+}
+.comment_guide_text {
+	margin-bottom: 10px;
+	font-size: 13px;
+	font-weight: 700;
+	color: #777;
+}
+.comment_write_input {
+	width: 90%;
+	padding: 10px;
+	height: 80px;
+	min-height: 80px;
+	box-sizing: border-box;
+	border: 1px solid #ddd;
+	font-size: 14px;
+	resize: none;
+}
+.comment_write_btn {
+  position: absolute;
+  right: 30px;
+  display: inline-block;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  width: 80px;
+  background-color: burlywood;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+.comment_list {
+  margin-top: 20px;
+  list-style-type: none;
+  padding: 0;
+}
+.comment_part {
+  position: relative;
+  border-top: 1px solid #e8e8e8;
+  margin-bottom: 20px;
+}
+.comment_inner {
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  position: relative;
+}
+.comment_name {
+  font-weight: 700;
+  color: #000;
+  padding-right: 10px;
+  border-right: 1px solid #ddd;
+  margin-right: 10px;
+}
+.comment_date {
+  color: #999;
+}
+.comment_answer_btn {
+  display: inline-block;
+  height: 24px;
+  line-height: 24px;
+  color: #fff;
+  background-color: burlywood;
+  width: 50px;
+  text-align: center;
+  font-size: 14px;
+  cursor: pointer;
+  /* margin-left: 10px; */
+}
+.comment_text {
+  margin-top: 40px;
+  font-size: 13px;
+  line-height: 1.6;
+  font-weight: 300;
+}
+.comment_reply_input {
+	width: 90%;
+	padding: 10px;
+	height: 80px;
+	min-height: 80px;
+	box-sizing: border-box;
+	border: 1px solid #ddd;
+	font-size: 14px;
+	resize: none;
+	margin-left: 20px;
+}
+.comment_reply, .comment_modify {
+	display: none;
+}
+comment_modify {
+	display: none;
+}
+.paging {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.paging img {
+  width: 25px;
+  height: auto;
+  vertical-align: middle;
+  margin: 0 5px;
+}
+
+.paging a {
+  text-decoration: none;
+  color: #ff3399;
+  font-weight: bold;
+  font-size: 16px;
+  margin: 0 5px;
+  transition: color 0.3s ease;
+}
+
+.paging a:hover {
+  color: #ff66b2;
+}
+
+.paging b {
+  font-size: 18px;
+  color: #ff3399;
+  font-weight: bold;
+  margin: 0 5px;
+}
+
+.paging a:visited {
+  color: #ff66b2;
+}

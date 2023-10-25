@@ -20,8 +20,7 @@
       </div>
       <div class="info">
         <div class="customer">
-          <h3>고객센터</h3><h1>02-0000-0000</h1>
-          
+          <h3>고객센터&nbsp;02-0000-0000</h3>
         </div>
         <div class="info_text_footer">
           <p>운영시간 : AM 09:00 ~ PM 18:00</p>

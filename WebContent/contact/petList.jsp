@@ -21,15 +21,7 @@
 			alert('${petDeleteResult}');
 		</script>
 	</c:if>
-	<c:if test="${not empty admin }">
-		<div class="admin_menu">
-			<fieldset>
-				<legend>등록관리</legend>
-				<b>등록현황 : ${cnt }</b>&nbsp;&nbsp;&nbsp;&nbsp; 
-				<a href="${conPath }/petAddView.do" style="width:50px; background-color: #ff3399; padding: 10px 30px; border-radius: 20px;">등록</a>
-			</fieldset>
-		</div>
-	</c:if>
+	<c:if test="${empty admin }">
 		<c:if test="${pettype eq '강아지' }">
 			<div id="pet_filter">
 				<div class="filter_menu">
@@ -66,6 +58,21 @@
 				</div>
 			</div>
 		</c:if>
+	</c:if>
+	<c:if test="${not empty admin }">
+		<div id="pet_filter">
+				<div class="filter_menu">
+					<div class="admin_menu">
+						<div class="sub_title">
+							<p>등록현황</p>
+						</div>
+							<p>※ 등록 수량 : ${cnt }</p>
+							<br />
+							<a href="${conPath }/petAddView.do">분양 등록</a>
+					</div>
+				</div>
+			</div>
+	</c:if>
 	<div id="card_wrap">
 		<c:forEach items="${listPet}" var="pet">
 	    <div class="card">

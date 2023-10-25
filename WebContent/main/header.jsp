@@ -19,7 +19,7 @@
 					<ul>
 						<li><a href="${conPath}/loginView.do">로그인</a></li>
 						<li><a href="${conPath}/joinAgree.do">회원가입</a></li>
-						<li><a href="/">고객센터</a></li>
+						<li><a href="${conPath }/customer.jsp">고객센터</a></li>
 					</ul>
 				</c:if>
 				<ul>

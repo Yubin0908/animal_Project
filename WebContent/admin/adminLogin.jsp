@@ -39,7 +39,7 @@
         <input type="checkbox" name="save_id" id="save_id" value="ok">
         <label for="save_id">
           <input type="checkbox" style="display:none;">
-          아이디 저장
+        		 아이디 저장
         </label>
       </div>
       <div class="member_find">
@@ -48,9 +48,9 @@
       <div class="login_submit">
         <input type="submit" value="로그인" id="lg_submit">
       </div>
-      <div class="login_join">
+<%--       <div class="login_join">
         <input type="button" value="회원가입" onclick="location.href='${conPath}/joinAgree.do'">
-      </div>
+      </div> --%>
     </form>
   </div>
     <br>

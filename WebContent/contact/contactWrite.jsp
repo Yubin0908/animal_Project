@@ -62,12 +62,11 @@
 						<td>
 							작성자
 							<c:if test="${not empty member }">
-								<input type="text" name="cwriter" value="${member.id }" readonly>
+								<input type="text" name="cwriter" value="${member.name }" readonly>
 							</c:if>
 							<c:if test="${empty member }">
 								<input type="text" name="cwriter">
 							</c:if>
-							
 						</td>
 					</tr>
 					<tr>

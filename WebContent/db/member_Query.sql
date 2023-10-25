@@ -12,7 +12,6 @@
   SELECT PW FROM MEMBER WHERE ID = 'kim12345';
   -- (5) 회원정보 수정
   UPDATE MEMBER SET
-    PW = 'testpw01',
     LOCTEL = '010',
     MIDTEL = '1212',
     LASTEL = '0911',
@@ -82,13 +81,30 @@
   DELETE FROM NOTICE WHERE NID = 1;
   -- (6) 리스트 갯수
   SELECT COUNT(*) CNT FROM NOTICE;
+
+  -- [공지사항 댓글 관련 쿼리 - COMMENT_T] --
+  -- (1) 댓글 출력[NAME, MTEXT, MIP, MDATE](PAGEING)
+SELECT * FROM COMMENT_T WHERE NID = 1 ORDER BY MGROUP DESC, MSTEP;
+SELECT * FROM 
+  (SELECT ROWNUM RN, A.* FROM (SELECT * FROM COMMENT_T WHERE NID = 1 ORDER BY MGROUP DESC, MSTEP) A)
+WHERE RN BETWEEN 1 AND 10;
   
-  -- [분양 게시판(리스트) 관련 쿼리 - LOCAL_PET] -- 
-  -- (1) 리스트 출력(paging)
-  -- (2) 리스트 추가
-  -- (3) 리스트 수정
-  -- (4) 리스트 삭제
-  
-  
-  
+  -- (2) 댓글 쓰기
+  INSERT INTO COMMENT_T VALUES(COMMENT_SEQ.NEXTVAL, 'kim12345', 1, SYSDATE, '댓글 테스트', COMMENT_SEQ.CURRVAL, 0, 0, '192.168.0.1');
+  -- (3) 댓글 삭제
+  DELETE FROM COMMENT_T WHERE MID = 39;
+  -- (4) DTO 가져오기
+  SELECT * FROM COMMENT_T WHERE MID = 1;
+  -- (5) 댓글 수정
+  UPDATE COMMENT_T SET
+    MDATE = SYSDATE,
+    MTEXT = '수정테스트',
+    MIP = '192.169.0.3'
+    WHERE MID = 1;
+  -- (6) 댓글 갯수
+  SELECT COUNT(*) CNT FROM COMMENT_T WHERE NID = 1;
+  -- (7) MSTEP 조정단계
+  UPDATE COMMENT_T SET MSTEP = MSTEP + 1 WHERE MGROUP = 1 AND MSTEP > 0;
+  -- (8) 답글 쓰기
+  INSERT INTO COMMENT_T VALUES (COMMENT_SEQ.NEXTVAL, 'test1234', 1, SYSDATE, '답글테스트', 1, 1, 1, '100.0.0.1');
   COMMIT;
