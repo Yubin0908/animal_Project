@@ -34,6 +34,23 @@ body {
 #gnb .gnb_menu > ul li a.on {
 	color: #ff66b2; /* Navigation 항목에 호버 시 색상 변경 */
 }
+/* top arrow */
+#go-to-top {
+	position: fixed;
+	bottom: 45px;
+	right: 0;
+	margin-left: 310px;
+	width: 30px;
+	height: 47px;
+	text-align: center;
+	transition: all 500ms ease-out;
+	display: inline-block;
+	z-index: 99;
+	cursor: pointer;
+}
+#go-to-top img {
+	width: 30px;
+}
 
 /* Wrap 스타일 */
 #wrap {

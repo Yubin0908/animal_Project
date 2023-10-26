@@ -11,7 +11,8 @@
 <body>
 	<form action="${conPath }/commentModify.do">
 		<input type="text" name="mid" value="${comment.mid}" />
-		<input type="text" name="pageNum" value="${pageNum }" />
+		<input type="text" name="pageNum" value="${param.pageNum }" />
+		<input type="text" name="cpageNum" value="${param.cpageNum }"/>
 		<input type="text" name="nid" value="${comment.nid }" />
 		<c:forEach var="i" begin="1" end="${comment.mindent }">
 			<c:if test="${i==comment.mindent }">
@@ -21,7 +22,7 @@
 				&nbsp; &nbsp; &nbsp;
 			</c:if>
 		</c:forEach>
-		<textarea rows="2" cols="5" name="cmemo" style="width:50%; height:30px; float:left; margin: 5px;">${comment.ctext }</textarea>
+		<textarea rows="2" cols="5" name="ctext" style="width:50%; height:30px; float:left; margin: 5px;">${comment.ctext }</textarea>
 		<input type="submit" value="수정" class="btn" style="height:30px; float:left; margin: 5px;">
 	</form>
 </body>

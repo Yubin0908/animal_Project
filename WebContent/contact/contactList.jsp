@@ -46,12 +46,12 @@
       <c:forEach items="${contactList }" var="contact">
       	<tr>
       		<td>${contact.cid }</td>
-      		<td>
+      		<td style="float:left;">
       			<c:forEach var="i" begin="1" end="${contact.cindent }">
-								<c:if test="${i eq contact.cindent }">└─</c:if>
+								<c:if test="${i eq contact.cindent }"> &nbsp; &nbsp; &nbsp; <img src="${conPath }/img/ico/enter.png" alt="enter" width="15"/></c:if>
 								<c:if test="${i ne contact.cindent }"> &nbsp;&nbsp;</c:if>
 							</c:forEach>
-							<a href="${conPath }/contactPw.do?cid=${contact.cid}&cpw=${contact.cpw}&pageNum=${pageNum}">${contact.ctitle }</a>
+							<a href="${conPath }/contactPw.do?cid=${contact.cid}&cpw=${contact.cpw}&pageNum=${pageNum}&cdata_status=${contact.cdata_status}">${contact.ctitle }</a>
       		</td>
       		<td>${contact.cwriter }</td>
       		<td>${contact.cdate }</td>

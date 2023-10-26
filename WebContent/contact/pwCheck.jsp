@@ -17,7 +17,12 @@
     <form action="${conPath}/contact.do" method="post">
     <input type="hidden" name="cid" value="${param.cid }" />
       <fieldset>
-        <legend style="text-align: center;">(게시물 상세보기) 비밀번호 확인</legend>
+        <c:if test="${param.cdata_status eq 1 }">
+        	<legend style="text-align: center;">(문의글 상세보기) 비밀번호 확인</legend>
+        </c:if>
+        <c:if test="${param.cdata_status eq 3 }">
+        	<legend style="text-align: center;">(답변글 상세보기) 비밀번호 확인</legend>
+        </c:if>
           <p class="item_name" style="text-align: center">비밀번호 입력</p>
           <br />
           <c:if test="${not empty admin }">
@@ -25,6 +30,9 @@
    				</c:if>
           <c:if test="${empty admin }">
           	<p><input type="password" name="cpw" value="" autofocus required></p> 
+          	<c:if test="${param.cdata_status eq 3 }">
+    					<p style="color:red; font-weight: 700; font-size: 13px; text-align: center;">답변글 비밀번호는 고객님이 문의하실때 등록한 비밀번호와 같습니다.</p>
+    				</c:if>
           </c:if>
           
           <br />

@@ -7,6 +7,22 @@
     <meta charset="UTF-8">
     <title>Insert title here</title>
     <link href="${conPath}/css/main.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+    	$(document).ready(function() {
+    		$('#go-to-top').click(function(e) {
+    			e.stopPropagation();
+    			$('html, body').animate({ scrollTop:0}, 'slow', 'easeOutCubic');
+    		});
+    		$(window).scroll(function() {
+    			if($(window).scrollTop()==0) {
+    				$('#go-to-top').css('opacity',0);
+    			} else {
+    				$('#go-to-top').css('opacity',1);
+    			}
+    		});
+    	});
+    </script>
 </head>
 <body>
 <jsp:include page="header.jsp" />
@@ -35,7 +51,9 @@
   		alert('${modifyMemberResult}');
   	</script>
   </c:if>
-  <br><br>
+  <div id="go-to-top">
+  	<a href="#"><img src="${conPath }/img/ico/top_arrow.png" alt="위로가기" /></a>
+  </div>
 	<div id="wrap">
 		<div id="container">
 			<div class="slide">

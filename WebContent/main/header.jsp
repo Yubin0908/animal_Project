@@ -53,8 +53,7 @@
 								<br />
 								관리자로 접속하셨습니다.
 								<br><a href="${conPath}/logout.do" style="margin: 0 20px 0 0;">로그아웃</a>	
-							</p>
-							
+							</p>					
 						</c:if>
 					</li>
 				</ul>
@@ -63,9 +62,9 @@
 				<a href="${conPath}/main.do"><img src="${conPath}/img/logo/logo_trans.png" alt="logo"></a>
 			</div>
 			<div class="lnb_right">
-				<form>
-					<input type="text" name="search">
-					<input type="submit" value="">
+				<form action="searchResult.do">
+					<input type="text" name="searchKeyword" id="search_box" placeholder="검색어를 입력하세요.">
+					<input type="submit" value="" id="search_btn">
 				</form>
 			</div>
 		</div>
@@ -108,7 +107,13 @@
 				</div>
 				<div class="gnb_menu gnb_service">
 					<ul>
-						<li><a href="${conPath }/hotelService.do">호텔서비스</a>
+						<li><a href="#">호텔서비스</a>
+							<div class="gnb_depth gnb_depth_05">
+								<ul>
+									<li><a href="${conPath }/hotelService.do">이용 요금</a></li>
+									<li><a href="${conPath }/hotelBookingView.jsp">이용 예약</a></li>
+								</ul>
+							</div>
 						</li>
 					</ul>
 				</div>

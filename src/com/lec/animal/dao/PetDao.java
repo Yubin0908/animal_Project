@@ -428,4 +428,39 @@ public class PetDao {
 		}
 		return pet;
 	}
+//	-- (9) 검색 기능
+	public ArrayList<PetDto> searchPet(String searchKeyword) {
+		ArrayList<PetDto> searchPet = new ArrayList<PetDto>();
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM LOCAL_PET WHERE PETTYPE LIKE ? OR PETBRADS LIKE ? OR PETNAME LIKE ?";
+		try {
+			conn = ds.getConnection();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, "%"+searchKeyword+"%");
+			ps.setString(2, "%"+searchKeyword+"%");
+			ps.setString(3, "%"+searchKeyword+"%");
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				String pettype = rs.getString("pettype");
+				String petbrads = rs.getString("petbrads");
+				String petname = rs.getString("petname");
+				String petimg = rs.getString("petimg");
+				Date petupdate = rs.getDate("petupdate");
+				searchPet.add(new PetDto(0, 0, pettype, petbrads, petname, 0, 0, petimg, petupdate, 0));
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage() + "searchPer 에러");
+		} finally {
+			try {
+				if(rs!=null) rs.close();
+				if(ps!=null) ps.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e) {
+				System.out.println(e.getMessage() + "close 에러");
+			}
+		}
+		return searchPet;
+	}
 }

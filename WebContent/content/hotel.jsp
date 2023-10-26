@@ -5,9 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+		<script defer src="${conPath }/js/hotel.js"></script>
+		<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiH3wc-L426sYwgkfih0AbVUq4sNwTEbM&callback=initMap"></script>
+	<style>
     * {
       margin: 0; padding: 0;
     }
@@ -80,6 +82,9 @@
     .table_tab {
       background-color: #eee;
     }
+    #map {
+    	height: 600px;
+    }
   </style>
 </head>
 <body>
@@ -134,13 +139,18 @@
         </tr>
       </table>
       <p class="content_line"></p>
-      <h4 style="color:#e9a624; text-align: left;">2. 이용안내</h4>
+     	<h4 style="color:#e9a624; text-align: left;">2. 이용안내</h4>
       <p>오픈기념 이벤트 진행중으로 정액권 할인중입니다.</p>
       <p>멍이랑냥이랑에서 분양받으신 회원님께는 요금 - 10% 추가로 할인해 드립니다.</p>
       <p>⚠ 예약 취소시, 환불 규정에따라 환불해 드립니다. 환불 규정을 꼭 읽어주시고 진행해주세요.</p>
       <p>저희 멍이랑냥이랑에서는 수의사가 상주하고 있으며, 위급/긴급 상황시 최대한 케어해드립니다.</p>
       <p>모든 객실은 분리 운영 되고있으며, 매일 소독/청소를 진행하고 있으니 안심하고 맡겨주세요.</p>
       <p>입-퇴실 시, 혹시 모를 불상사를 대비하여 보호자 깨서는 밖에서 대기해 주셔야 합니다.</p>
+    </div>
+    
+    <p class="content_line"></p>
+    <h4 style="color:#e9a624; text-align: left;">3. 호텔 위치</h4>
+    <div id="map">
     </div>
   </div>
   <jsp:include page="../main/footer.jsp"/>
