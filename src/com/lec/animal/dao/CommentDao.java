@@ -175,6 +175,7 @@ public class CommentDao {
 			ps.setString(2, comment.getMip());
 			ps.setInt(3, comment.getMid());
 			result = ps.executeUpdate();
+			System.out.println(result == PASS ? "성공":"실패");
 		} catch (Exception e) {
 			System.out.println(e.getMessage() + "Modify Comment 에러");
 		} finally {

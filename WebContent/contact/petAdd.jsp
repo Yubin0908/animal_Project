@@ -142,13 +142,13 @@
 				<tr>
 					<td>
 						<label for="file" class="file-label"></label>
-						<input type="file" name="petimg" id="file" accept=".jpg, .png, .jpeg, .gif"/>
+						<input type="file" name="petimg" id="file" accept=".jpg, .png, .jpeg, .gif" onchange="checkImg()"/><span id="imgPASS" style="display:none; color: green; font-weight: bold;">이미지 등록됨</span>
 					</td>
 				</tr>
 				<tr>
 					<td>
 						작성자
-						<input type="text" name="comno" value="${admin.comno }" disabled style="width: 100px;">
+						<input type="text" name="comno" value="${admin.comno }" disabled style="width: 100px;"><span style="margin-left: 15px; font-weight: 700;">담당자 : ${admin.comname }</span>
 					</td>
 				</tr>
 				<tr>
@@ -161,3 +161,15 @@
 	<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>
+<script>
+	function checkImg() {
+		var input = document.getElementById('file');
+		var imgPASS = document.getElementById('imgPASS');
+		
+		if(input.files.length > 0) {
+			imgPASS.style.display = 'inline';
+		} else {
+			imgPASS.style.dispaly = 'none';
+		}
+	}
+</script>

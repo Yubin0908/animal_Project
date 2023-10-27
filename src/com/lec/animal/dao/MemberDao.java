@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -262,6 +263,113 @@ public class MemberDao {
 		} finally {
 			try {
 				if(rs!=null) rs.close();
+				if(ps!=null) ps.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e) {
+				System.out.println(e.getMessage() + "close 에러");
+			}
+		}
+		return result;
+	}
+//	-- (8) 비밀번호 변경
+	public int pwmodify(MemberDto member) {
+		int result = FAIL;
+		Connection conn = null;
+		PreparedStatement ps = null;
+		String sql = "UPDATE MEMBER SET PW = ? WHERE ID = ?";
+		try {
+			conn = ds.getConnection();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, member.getPw());
+			ps.setString(2, member.getId());
+			result = ps.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e.getMessage() + "비밀번호 변경 에러");
+		}
+		return result;
+	}
+//	-- (9) memberList 출력(관리자권한)
+	public ArrayList<MemberDto> listMember(int startRow, int endRow) {
+		ArrayList<MemberDto> member = new ArrayList<MemberDto>();
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM " + 
+					 "    (SELECT ROWNUM RN, A.* FROM (SELECT * FROM MEMBER ORDER BY REGIDATE DESC, ACCOUNT_STATUS) A)" + 
+					 "  WHERE RN BETWEEN ? AND ?";
+		try {
+			conn = ds.getConnection();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, startRow);
+			ps.setInt(2, endRow);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				String id = rs.getString("id");
+				String pw = rs.getString("pw");
+				String name = rs.getString("name");
+				String loctel = rs.getString("loctel");
+				String midtel = rs.getString("midtel");
+				String lastel = rs.getString("lastel");
+				String email = rs.getString("email");
+				String address = rs.getString("address");
+				Date regidate = rs.getDate("regidate");
+				int account_status = rs.getInt("account_status");
+				member.add(new MemberDto(id, pw, name, loctel, midtel, lastel, email, address, null, regidate, account_status));
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage() + "list 출력 에러");
+		} finally {
+			try {
+				if(rs!=null) rs.close();
+				if(ps!=null) ps.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e) {
+				System.out.println(e.getMessage() + "close 에러");
+			}
+		}
+		
+		return member;
+	}
+	public int memberCnt() {
+		int cnt = 0;
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "SELECT COUNT(*) CNT FROM MEMBER";
+		try {
+			conn = ds.getConnection();
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			rs.next();
+			cnt = rs.getInt("cnt");
+		} catch (Exception e) {
+			System.out.println(e.getMessage() + "cnt 에러");
+		} finally {
+			try {
+				if(rs!=null) rs.close();
+				if(ps!=null) ps.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e) {
+				System.out.println(e.getMessage() + "close 에러");
+			}
+		}
+		return cnt;
+	}
+	public int membeControl(String id, int account_status) {
+		int result = FAIL;
+		Connection conn = null;
+		PreparedStatement ps = null;
+		String sql = "UPDATE MEMBER SET ACCOUNT_STATUS = ? WHERE ID = ?";
+		try {
+			conn = ds.getConnection();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, account_status);
+			ps.setString(2, id);
+			result = ps.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e.getMessage() + "회원관리 에러");
+		} finally {
+			try {
 				if(ps!=null) ps.close();
 				if(conn!=null) conn.close();
 			} catch (Exception e) {

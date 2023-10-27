@@ -52,8 +52,9 @@
   	</script>
   </c:if>
   <div id="go-to-top">
-  	<a href="#"><img src="${conPath }/img/ico/top_arrow.png" alt="위로가기" /></a>
+  	<a href="#"><img src="${conPath }/img/ico/top_arrow.png" alt="위로가기" /> Top</a>
   </div>
+  <br /><br /><br />
 	<div id="wrap">
 		<div id="container">
 			<div class="slide">

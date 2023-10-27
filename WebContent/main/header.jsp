@@ -130,6 +130,20 @@
 						</li>
 					</ul>
 				</div>
+				<c:if test="${not empty admin }">
+					<div class="gnb_menu gnb_admin">
+						<ul>
+							<li><a href="#">관리자 메뉴</a>
+								<div class="gnb_depth gnb_depth_07">
+									<ul>
+										<li><a href="${conPath }/memberList.do">회원관리</a></li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</c:if>
+				
 			</div>
 		</div>
 	</div>

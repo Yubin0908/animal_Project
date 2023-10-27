@@ -20,9 +20,14 @@ public class NoticeService implements Service {
 		if(notice != null) {
 			request.setAttribute("notice", notice);
 		} 
-		String cpageNum = request.getParameter("pageNum");
+		System.out.println(notice);
+		String cpageNum = request.getParameter("cpageNum");
 		if(cpageNum == null || cpageNum.equals("")) {
 			cpageNum = "1";
+		}
+		String pageNum = request.getParameter("pageNum");
+		if(pageNum != null || pageNum.equals("")) {
+			pageNum = "1";
 		}
 		int cCurrPage = Integer.parseInt(cpageNum);
 		final int PAGESIZE = 10, BLOCKSIZE = 5;
@@ -44,7 +49,8 @@ public class NoticeService implements Service {
 		request.setAttribute("endPage", cendPage);
 		request.setAttribute("page", cpage);
 		request.setAttribute("cnt", ccnt);
-		request.setAttribute("pageNum", cpageNum);
+		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("cpageNum", cpageNum);
 		request.setAttribute("omno", comno);
 	}
 

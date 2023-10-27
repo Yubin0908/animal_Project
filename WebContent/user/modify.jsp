@@ -17,17 +17,17 @@
   	}
   </style>
 	<script>
-  $( function() {
-    $( "#datepicker" ).datepicker({
-    	dateFormat: "yy-mm-dd",
-    	monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-    	dayNamesMin: [ "일", "월", "화", "수", "목", "금", "토" ],
-    	changeMonth: true, changeYear: true,
-    	showMonthAfterYear: true,
-    	yearSuffix: '년',
-    	maxDate : 'y',
-    });
-  } );
+	  $( function() {
+	    $( "#datepicker" ).datepicker({
+	    	dateFormat: "yy-mm-dd",
+	    	monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	    	dayNamesMin: [ "일", "월", "화", "수", "목", "금", "토" ],
+	    	changeMonth: true, changeYear: true,
+	    	showMonthAfterYear: true,
+	    	yearSuffix: '년',
+	    	maxDate : 'y',
+	    });
+	  } );
   </script>
 </head>
 <body>
@@ -41,7 +41,9 @@
   <br /><br /><br />
   <div id="join_wrap">
     <form action="${conPath}/modifyAccount.do" method="post">
+      <a href="${conPath}/modifyPwView.do" style="margin: 0 0 25px 320px; background-color: #ff66b2; padding: 12px; border-radius: 20px;">비밀번호변경</a>
       <fieldset>
+        
         <legend>개인정보변경</legend>
           <p class="item_name">이메일&nbsp;&nbsp;&nbsp;<a id="emailCheckResult"></a></p>
           <p><input type="email" name="email" required value="${member.email }"></p>

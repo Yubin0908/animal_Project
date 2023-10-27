@@ -83,8 +83,22 @@ public class Controller extends HttpServlet {
 	    	service = new WithdrawAccountService();
 	    	service.execute(request, response);
 	    	viewPage = "main.do";
+	    } else if(command.equals("/modifyPwView.do")) { // view PwModify
+	    	viewPage = "user/modifyPw.jsp";
+	    } else if(command.equals("/modifyPw.do")) {
+	    	service = new ModifyPwService();
+	    	service.execute(request, response);
+	    	viewPage = "main.do";
 	    } else if(command.equals("/hotelService.do")) { //content view - pet 호텔
 	    	viewPage = "content/hotel.jsp";
+	    } else if(command.equals("/memberList.do")) { // admin 회원관리 view
+	    	service = new MemberListService();
+	    	service.execute(request, response);
+	    	viewPage = "admin/memberList.jsp";
+	    } else if(command.equals("/memberControl.do")) { // admin 회원상태 Process
+	    	service = new MemberControlService();
+	    	service.execute(request, response);
+	    	viewPage = "memberList.do";
 	    }
 	    // 메뉴할당
 	    else if(command.equals("/about.do")) { // content view - about
@@ -209,19 +223,15 @@ public class Controller extends HttpServlet {
 	    	service = new CommentWriteService();
 	    	service.execute(request, response);
 	    	viewPage = "notice.do";
-	    } else if(command.equals("/commentModifyView.do")) { // 구현중
-	    	service = new CommentModifyVIewService();
-	    	service.execute(request, response);
-	    	viewPage = "notice.do";
-	    } else if(command.equals("/commentReply.do")) {
+	    }  else if(command.equals("/commentReply.do")) { // Process 답글 -> 답댓글 
 	    	service = new CommentReplyService();
 	    	service.execute(request, response);
 	    	viewPage = "notice.do";
-	    } else if(command.equals("/commentModify.do")) { // 구현중
+	    } else if(command.equals("/commentModify.do")) { // Process 댓글 수정
 	    	service = new CommentModifyService();
 	    	service.execute(request, response);
 	    	viewPage = "notice.do";
-	    } else if(command.equals("/commentDelete.do")) {
+	    } else if(command.equals("/commentDelete.do")) { // Process 댓글 삭제
 	    	service = new CommentDeleteService();
 	    	service.execute(request, response);
 	    	viewPage = "notice.do";

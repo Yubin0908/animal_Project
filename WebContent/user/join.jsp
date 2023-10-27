@@ -143,7 +143,6 @@
       <div class="joinForm_submit">
         <input type="submit" value="회원가입">
       </div>
-      
     </form>
   </div>
   <jsp:include page="../main/footer.jsp"/>
