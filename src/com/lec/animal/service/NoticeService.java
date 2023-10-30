@@ -20,7 +20,6 @@ public class NoticeService implements Service {
 		if(notice != null) {
 			request.setAttribute("notice", notice);
 		} 
-		System.out.println(notice);
 		String cpageNum = request.getParameter("cpageNum");
 		if(cpageNum == null || cpageNum.equals("")) {
 			cpageNum = "1";

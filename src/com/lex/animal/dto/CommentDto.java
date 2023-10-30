@@ -13,6 +13,10 @@ public class CommentDto {
 	private int mindent;
 	private String mip;
 	private String name;
+	private int reply_count;
+	
+	
+	
 	public CommentDto() { }
 	
 	public CommentDto(int mid, String id, int nid, Date mdate, String mtext, int mgroup, int mstep, int mindent,
@@ -108,6 +112,13 @@ public class CommentDto {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public int getReply_count() {
+		return reply_count;
+	}
+	public void setReply_count(int reply_count) {
+		this.reply_count = reply_count;
 	}
 
 	@Override

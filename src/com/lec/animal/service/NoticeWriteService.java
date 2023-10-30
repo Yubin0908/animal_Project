@@ -41,7 +41,7 @@ public class NoticeWriteService implements Service {
 			String ntext = mRequest.getParameter("ntext");
 			String nip = request.getRemoteAddr();
 			NoticeDao nDao = NoticeDao.getInstance();
-			NoticeDto notice = new NoticeDto(0, comno, null, ntitle, ntext, nimg, nip);
+			NoticeDto notice = new NoticeDto(0, comno, null, ntitle, ntext, nimg, nip, 0);
 			result = nDao.addNotice(notice);
 			if(result == NoticeDao.PASS) {
 				request.setAttribute("NoticeMsg", "공지사항이 등록되었습니다.");

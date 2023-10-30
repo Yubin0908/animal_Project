@@ -113,6 +113,7 @@
   </c:if>
   <br /><br /><br />
   <div id="memberList_wrap">
+    <div>전체 회원 수 : <a style="font-weight: 700; color: #ff66b2; font-size: 1.2em">${cnt }</a> 명 입니다.</div>
     <table>
       <tr>
         <th>ID</th>

@@ -124,7 +124,7 @@
 		          </c:choose>
 		      	</div>
 		      <div class="card-content">
-		          <p>${notice.ntitle}</p>
+		          <p>${notice.ntitle}&nbsp;<span style="color: #ff66b2; font-size: 20px; ">[${notice.reply_count }]</span></p>
 		          <span>${notice.ndate}</span>
 		      		<br /><br />
 		          <span style="word-Wrap: break-word;">${notice.ntext }</span>

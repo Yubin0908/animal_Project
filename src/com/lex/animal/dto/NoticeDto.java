@@ -10,10 +10,11 @@ public class NoticeDto {
 	private String ntext;
 	private String nimg;
 	private String nip;
+	private int reply_count;
 	
 	public NoticeDto() { }
 	
-	public NoticeDto(int nid, int comno, Date ndate, String ntitle, String ntext, String nimg, String nip) {
+	public NoticeDto(int nid, int comno, Date ndate, String ntitle, String ntext, String nimg, String nip, int reply_count) {
 		super();
 		this.nid = nid;
 		this.comno = comno;
@@ -22,6 +23,7 @@ public class NoticeDto {
 		this.ntext = ntext;
 		this.nimg = nimg;
 		this.nip = nip;
+		this.reply_count = reply_count;
 	}
 
 	public int getNid() {
@@ -79,11 +81,19 @@ public class NoticeDto {
 	public void setNip(String nip) {
 		this.nip = nip;
 	}
+	
+	public int getReply_count() {
+		return reply_count;
+	}
+	
+	public void setReply_count(int reply_count) {
+		this.reply_count = reply_count;
+	}
 
 	@Override
 	public String toString() {
 		return "NoticeDto [nid=" + nid + ", comno=" + comno + ", ndate=" + ndate + ", ntitle=" + ntitle + ", ntext="
-				+ ntext + ", nimg=" + nimg + ", nip=" + nip + "]";
+				+ ntext + ", nimg=" + nimg + ", nip=" + nip +  ", reply_count=" + reply_count + "]";
 	}
 
 }

@@ -77,6 +77,7 @@ public class CommentDao {
 		int result = FAIL;
 		Connection conn = null;
 		PreparedStatement ps = null;
+		replyCntPlus(comment.getNid());
 		String sql = "INSERT INTO COMMENT_T VALUES(COMMENT_SEQ.NEXTVAL, ?, ?, SYSDATE, ?, COMMENT_SEQ.CURRVAL, 0, 0, ?)";
 		try {
 			conn = ds.getConnection();
@@ -109,6 +110,7 @@ public class CommentDao {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, mid);
 			result = ps.executeUpdate();
+			replyCntMinus(result);
 		} catch (Exception e) {
 			System.out.println(e.getMessage() + "deleteComment 에러");
 		} finally {
@@ -240,6 +242,7 @@ public class CommentDao {
 	public int replyComment(CommentDto comment) {
 		int result = FAIL;
 		replyCommentFirstStep(comment.getMgroup(), comment.getMstep());
+		replyCntPlus(comment.getNid());
 		Connection conn = null;
 		PreparedStatement ps = null;
 		String sql = "INSERT INTO COMMENT_T VALUES (COMMENT_SEQ.NEXTVAL, ?, ?, SYSDATE, ?, ?, ?, ?, ?)";
@@ -266,6 +269,46 @@ public class CommentDao {
 			}
 		}
 		return result;
+	}
+//	-- (9) reply_count ++
+	private void replyCntPlus(int nid) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		String sql = "UPDATE NOTICE SET REPLY_COUNT = REPLY_COUNT + 1 WHERE NID = ?";
+		try {
+			conn = ds.getConnection();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, nid);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e.getMessage() + "count ++ 에러");
+		} finally {
+			try {
+				
+			} catch (Exception e) {
+				System.out.println(e.getMessage() + "close 에러");
+			}
+		}
+	}
+//	-- (10) REPLY_COUNT --
+	private void replyCntMinus(int nid) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		String sql = "UPDATE NOTICE SET REPLY_COUNT = REPLY_COUNT - 1 WHERE NID = ?";
+		try {
+			conn = ds.getConnection();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, nid);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e.getMessage() + "count -- 에러");
+		} finally {
+			try {
+				
+			} catch (Exception e) {
+				System.out.println(e.getMessage() + "close 에러");
+			}
+		}
 	}
 }
 

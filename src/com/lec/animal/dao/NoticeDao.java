@@ -55,7 +55,8 @@ public class NoticeDao {
 				String ntext = rs.getString("ntext");
 				String nimg = rs.getString("nimg");
 				String nip = rs.getString("nip");
-				notice.add(new NoticeDto(nid, comno, ndate, ntitle, ntext, nimg, nip));
+				int reply_count = rs.getInt("reply_count");
+				notice.add(new NoticeDto(nid, comno, ndate, ntitle, ntext, nimg, nip, reply_count));
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage() + "리스트 출력에러");
@@ -89,7 +90,8 @@ public class NoticeDao {
 				String ntext = rs.getString("ntext");
 				String nimg = rs.getString("nimg");
 				String nip = rs.getString("nip");
-				notice = new NoticeDto(nid, comno, ndate, ntitle, ntext, nimg, nip);
+				int reply_count = rs.getInt("reply_count");
+				notice = new NoticeDto(nid, comno, ndate, ntitle, ntext, nimg, nip, reply_count);
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage() + "Notice DtoLoad 에러");
@@ -110,7 +112,7 @@ public class NoticeDao {
 		Connection conn = null;
 		PreparedStatement ps = null;
 
-		String sql = "INSERT INTO NOTICE VALUES (NOTICE_SEQ.NEXTVAL ,?, SYSDATE, ?, ?, ?, ?)";
+		String sql = "INSERT INTO NOTICE VALUES (NOTICE_SEQ.NEXTVAL ,?, SYSDATE, ?, ?, ?, ?, 0)";
 		try {
 			conn = ds.getConnection();
 			ps = conn.prepareStatement(sql);
@@ -215,4 +217,5 @@ public class NoticeDao {
 		}
 		return cnt;
 	}
+
 }

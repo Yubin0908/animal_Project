@@ -41,7 +41,7 @@ public class NoticeModifyService implements Service {
 			String nip = request.getRemoteAddr();
 
 			NoticeDao nDao = NoticeDao.getInstance();
-			NoticeDto notice = new NoticeDto(nid, comno, null, ntitle, ntext, nimg, nip);
+			NoticeDto notice = new NoticeDto(nid, comno, null, ntitle, ntext, nimg, nip, 0);
 			result = nDao.modifyNotice(notice);
 			if(result == NoticeDao.PASS) {
 				request.setAttribute("NoticeMsg", "정상적으로 수정되었습니다.");

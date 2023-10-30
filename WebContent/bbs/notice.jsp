@@ -56,10 +56,10 @@
 	        <form action="commentWrite.do" method="post">
 	          <input type="hidden" name="nid" value="${param.nid }" />
 	          <input type="hidden" name="pageNum" value="${param.pageNum }"/>
-	          <c:if test="${empty member }">
+	          <c:if test="${empty member && empty admin }">
 	         	 <textarea name="mtext" class="comment_write_input" placeholder="로그인 하셔야 댓글 달기가 가능합니다." disabled></textarea>
 	          </c:if>
-	          <c:if test="${not empty member }">
+	          <c:if test="${not empty member || not empty admin }">
 	        	  <textarea name="mtext" class="comment_write_input"></textarea>
 	          </c:if>
 	          <input type="submit" value="댓글 달기" class="comment_write_btn">
@@ -100,7 +100,7 @@
 					    	<input type="hidden" name="mgroup" value="${cmt.mgroup }"/>
 					    	<input type="hidden" name="mstep" value="${cmt.mstep }"/>
 					    	<input type="hidden" name="mindent" value="${cmt.mindent }"/>
-					    	<textarea name="mtext" class="text-reply comment_reply_input" <c:if test="${empty member }">placeholder="로그인 하셔야 답글 달기가 가능합니다." disabled</c:if>></textarea>
+					    	<textarea name="mtext" class="text-reply comment_reply_input" <c:if test="${empty member && empty admin }">placeholder="로그인 하셔야 답글 달기가 가능합니다." disabled</c:if>></textarea>
 				    		<input type="submit" value="답글 달기" class="btn-reply comment_write_btn">
 					    </form>
 						</div>
