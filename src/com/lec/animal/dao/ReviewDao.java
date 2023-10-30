@@ -39,7 +39,7 @@ public class ReviewDao {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		String sql = "SELECT * FROM" + 
-					 "    (SELECT ROWNUM RN, RPAD(SUBSTR(NAME,0,1),LENGTH(NAME), '*') NAME, A.* FROM REVIEW A, MEMBER M" + 
+					 "    (SELECT ROWNUM RN, RPAD(SUBSTR(NAME,0,1),LENGTH(NAME)+1, '*') NAME, A.* FROM REVIEW A, MEMBER M" + 
 					 "     WHERE A.ID = M.ID ORDER BY RID DESC)" + 
 					 "    WHERE RN BETWEEN ? AND ?";
 		try {
@@ -105,7 +105,9 @@ public class ReviewDao {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = "SELECT R.*, M.NAME FROM REVIEW R, MEMBER M WHERE R.ID = M.ID AND RID = ?";
+		String sql = "SELECT R.*, (SELECT RPAD(SUBSTR(M.NAME, 0, 1), LENGTH(M.NAME)+1, '*') FROM MEMBER M WHERE M.ID = R.ID) AS NAME" + 
+					 "  FROM REVIEW R" + 
+					 "  WHERE R.RID = ?";
 		try {
 			conn = ds.getConnection();
 			ps = conn.prepareStatement(sql);

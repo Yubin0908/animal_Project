@@ -37,6 +37,7 @@
         .card .card-content {
             flex: 1;
             padding: 20px;
+            line-height: auto;
         }
 
         .card .card-content p {
@@ -127,7 +128,6 @@
 		          <p>${notice.ntitle}&nbsp;<span style="color: #ff66b2; font-size: 20px; ">[${notice.reply_count }]</span></p>
 		          <span>${notice.ndate}</span>
 		      		<br /><br />
-		          <span style="word-Wrap: break-word;">${notice.ntext }</span>
 		        </div>
 		      </div>
 	   		</a>

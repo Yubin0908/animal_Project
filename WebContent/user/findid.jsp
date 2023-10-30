@@ -12,12 +12,17 @@
 <body>
 	<jsp:include page="../main/header.jsp" />
 	<br /><br /><br />
+	<c:if test="${not empty findIdResult }">
+		<script>
+			alert('${findIdResult}');
+		</script>
+	</c:if>
 	<div id="login_wrap">
     <div class="login_title">
       <p class="desc">아이디/비밀번호 찾기</p>
       <p class="login_sub_title bold">FIND YOUR ID </p>
     </div>
-    <form action="find_id_pw_process.jsp" method="post">
+    <form action="${conPath }/findid.do" method="post">
       <div class="login_form_id">
         <p>이름</p>
         <input type="text" name="name" id="name" placeholder="가입 시 등록한 이름" required>

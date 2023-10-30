@@ -5,9 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
     * {
       margin: 0;
       padding: 0;
@@ -106,6 +106,12 @@
 </head>
 <body>
   <jsp:include page="../main/header.jsp"/>
+  <c:if test="${not empty member }">
+  	<script>
+  		alert('올바른 접근이 아닙니다.(-1)');
+  		history.back();
+  	</script>
+  </c:if>
   <c:if test="${not empty controlResult }">
   	<script>
   		alert('${controlResult}');

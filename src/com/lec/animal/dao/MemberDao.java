@@ -378,4 +378,32 @@ public class MemberDao {
 		}
 		return result;
 	}
+	public String idFind(String name, String email) {
+		String result = "";
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "SELECT ID FROM MEMBER WHERE NAME = ? AND EMAIL = ? AND ACCOUNT_STATUS != 0";
+		try {
+			conn = ds.getConnection();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, name);
+			ps.setString(2, email);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				result = rs.getString("id");
+			} 
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if(rs!=null) rs.close();
+				if(ps!=null) ps.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return result;
+	}
 }

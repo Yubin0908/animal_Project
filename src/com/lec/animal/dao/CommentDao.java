@@ -33,24 +33,24 @@ public class CommentDao {
 		}
 	}
 //	  -- (1) 댓글 출력[NAME, MTEXT, MIP, MDATE](PAGEING)
-	public ArrayList<CommentDto> listComment(int startRow, int endRow) {
+	public ArrayList<CommentDto> listComment(int nid, int startRow, int endRow) {
 		ArrayList<CommentDto> comment = new ArrayList<CommentDto>();
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		String sql = "SELECT * FROM " + 
-				"  (SELECT ROWNUM RN, A.* FROM (SELECT * FROM COMMENT_T WHERE NID = 1 ORDER BY MGROUP DESC, MSTEP) A)" + 
+				"  (SELECT ROWNUM RN, A.* FROM (SELECT * FROM COMMENT_T WHERE NID = ? ORDER BY MGROUP DESC, MSTEP) A)" + 
 				"WHERE RN BETWEEN ? AND ?";
 		try {
 			conn = ds.getConnection();
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, startRow);
-			ps.setInt(2, endRow);
+			ps.setInt(1, nid);
+			ps.setInt(2, startRow);
+			ps.setInt(3, endRow);
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				int mid = rs.getInt("mid");
 				String id = rs.getString("id");
-				int nid = rs.getInt("nid");
 				Date mdate = rs.getDate("mdate");
 				String mtext = rs.getString("mtext");
 				int mgroup = rs.getInt("mgroup");

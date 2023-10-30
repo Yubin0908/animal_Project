@@ -99,12 +99,16 @@ public class Controller extends HttpServlet {
 	    	service = new MemberControlService();
 	    	service.execute(request, response);
 	    	viewPage = "memberList.do";
+	    } else if(command.equals("/findid.do")) { // id찾기
+	    	service = new FindAccountId();
+	    	service.execute(request, response);
+	    	viewPage = "findAccountid.do";
 	    }
 	    // 메뉴할당
 	    else if(command.equals("/about.do")) { // content view - about
 	    	viewPage = "content/about.jsp";
 	    } else if(command.equals("/petList.do")) { // view 분양리스트
-	    	String pettype = request.getParameter("pettype");
+			/* String pettype = request.getParameter("pettype"); */
 	    	String petbrads = request.getParameter("petbrads");
 	    	if(petbrads == null) {
 	    		service = new PetListService();
@@ -122,7 +126,7 @@ public class Controller extends HttpServlet {
 	    	service.execute(request, response);
 	    	viewPage = "petList.do";
 	    } else if(command.equals("/petDelete.do")) { // Process 분양리스트 삭제
-	    	String pettype = request.getParameter("pettype");
+			/* String pettype = request.getParameter("pettype"); */
 	    	service = new PetDeleteService();
 	    	service.execute(request, response);
 	    	viewPage = "petList.do";

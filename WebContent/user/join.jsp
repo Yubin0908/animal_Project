@@ -115,7 +115,7 @@
           <p class="item_name">이메일&nbsp;&nbsp;&nbsp;<a id="emailCheckResult"></a></p>
           <p><input type="email" name="email" required></p>
           <p class="item_name">전화번호</p>
-          <p style="text-align: center"><input type="text" name="loctel" style="width: 100px" placeholder="앞번호"> - <input type="text" name="midtel" style="width: 100px" placeholder="중간번호"> - <input type="text" name="lastel" style="width: 100px" placeholder="끝번호"></p>
+          <p style="text-align: center"><input type="text" name="loctel" style="width: 100px" placeholder="앞번호" required> - <input type="text" name="midtel" style="width: 100px" placeholder="중간번호" required> - <input type="text" name="lastel" style="width: 100px" placeholder="끝번호" required></p>
       </fieldset>
       <fieldset>
         <legend>선택입력</legend>

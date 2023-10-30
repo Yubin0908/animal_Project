@@ -98,14 +98,6 @@
 				var radio_select = $('input[name="pettype"]:checked').val();
 				$('.petname_in').text(radio_select);
 			});
-			/* var fileUpload = $('input[name="petimg"]').val();
-			$('#file').change(function() {
-				$.ajax({
-					url : '${comPath}/fileTemp.do';
-					type : 'post',
-					data : 'petimg='+petimg,
-				}); 
-			});*/
 		});
 	</script>
 </head>

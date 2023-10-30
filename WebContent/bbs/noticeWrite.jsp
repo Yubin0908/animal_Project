@@ -82,8 +82,8 @@
 	<form class="review-form" action="${conPath }/noticeWrite.do" method="post" enctype="multipart/form-data">
 	    <p>제목 <input type="text" name="ntitle" required/></p>
 	    <textarea name="ntext"><p><img src="${conPath }/img/logo/logo_trans.png" alt="Logo" width="300"/></p></textarea>
-	    <input type="file" class="file-input" name="nimg" accept="image/*" id="file-upload" style="background-color: transparent;"/>
-	<label for="file-upload" class="custom-file-upload">파일 업로드</label>
+	    <input type="file" class="file-input" name="nimg" accept="image/*" id="file-upload" style="background-color: transparent; display: none;"/>
+	<label for="file-upload" class="custom-file-upload">대표 이미지 등록</label>
 	    <input type="submit" value="공지글 올리기" class="review-btn" />
 	</form>
 	<br /><br /><br />

@@ -33,7 +33,7 @@ public class NoticeService implements Service {
 		int cstartRow = (cCurrPage -1) * PAGESIZE + 1;
 		int cendRow = cstartRow + PAGESIZE - 1;
 		CommentDao cDao = CommentDao.getInstance();
-		ArrayList<CommentDto> comment = cDao.listComment(cstartRow, cendRow);
+		ArrayList<CommentDto> comment = cDao.listComment(nid, cstartRow, cendRow);
 		request.setAttribute("commentList", comment);
 		int ccnt = cDao.getCommentCnt(nid);
 		int comno = ccnt - cstartRow + 1;
