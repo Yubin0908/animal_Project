@@ -4,9 +4,6 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.lec.animal.dao.CommentDao;
 import com.lec.animal.dao.NoticeDao;
 import com.lex.animal.dto.NoticeDto;
 

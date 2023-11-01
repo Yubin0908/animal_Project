@@ -13,6 +13,10 @@
     * {
       margin: 0; padding: 0;
     }
+    
+    body {
+    	background-color: #fff;
+    }
     #hotel_wrap {
       width: 1400px;
       min-height: 600px;

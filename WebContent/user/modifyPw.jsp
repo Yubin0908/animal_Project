@@ -48,12 +48,12 @@
     <form action="${conPath}/modifyPw.do" method="post">
     <input type="hidden" name="id" value="${member.id }" />
       <fieldset>
-        <legend style="text-align: center;">비밀번호 입력</legend>
-          <p class="item_name" style="text-align: center">비밀번호 입력</p>
+        <legend style="text-align: center;">변경할 비밀번호 입력</legend>
+          <p class="item_name" style="text-align: center">새 비밀번호 입력</p>
           <br />
           <p><input type="password" name="pw" autofocus required></p> 
           <br />
-          <p class="item_name" style="text-align: center">비밀번호 확인</p>
+          <p class="item_name" style="text-align: center">새 비밀번호 확인</p>
           <br />
           <p><input type="password" name="pwChk" autofocus required></p> 
           <p id="pwCheckResult" class=""></p>

@@ -32,8 +32,10 @@
   WHERE RN BETWEEN 1 AND 10;
   -- (10) member 수
   SELECT COUNT(*) CNT FROM MEMBER;
-
+  -- (11) ID 찾기
+  SELECT ID FROM MEMBER WHERE NAME = '홍길동' AND EMAIL = 'hong@test.com' AND ACCOUNT_STATUS != 0;
   
+  SELECT * FROM MEMBER;
   COMMIT;
   
   

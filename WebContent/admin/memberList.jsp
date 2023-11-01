@@ -15,6 +15,7 @@
     
     body {
       font-family: Arial, sans-serif;
+      background-color: #fff;
     }
     
     #memberList_wrap {
