@@ -11,7 +11,7 @@
 - OpenSource Libraries : jQuery v3.7.1, jQueryUI, GoogleMapAPI, TinyMCE <br>
 - 프로젝트 소개 : 멍이랑 & 냥이랑 프로젝트는 동물 분양 사이트 입니다. <br>
 
-<h2> 메인 화면 </h2>
+# 메인 화면
 ![mainpage](https://github.com/Yubin0908/animal_Project/assets/127021788/1e2e0349-deda-4d48-84e6-d5e4bcd50c6f)
 
 # 목차
